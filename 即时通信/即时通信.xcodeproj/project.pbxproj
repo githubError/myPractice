@@ -29,6 +29,8 @@
 		D1A1D8F21CEA3F0400927C86 /* CPFMessageListController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8F11CEA3F0400927C86 /* CPFMessageListController.m */; };
 		D1A1D8F51CEA4BBD00927C86 /* CPFFriendListController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8F41CEA4BBD00927C86 /* CPFFriendListController.m */; };
 		D1A1D8F81CEA4BEB00927C86 /* CPFMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8F71CEA4BEB00927C86 /* CPFMeViewController.m */; };
+		D1A1D8FB1CEA50A400927C86 /* CPFMessageListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8FA1CEA50A400927C86 /* CPFMessageListViewCell.m */; };
+		D1A1D8FD1CEA5A8100927C86 /* CPFMessageListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1A1D8FC1CEA5A8100927C86 /* CPFMessageListViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +148,9 @@
 		D1A1D8F41CEA4BBD00927C86 /* CPFFriendListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFFriendListController.m; sourceTree = "<group>"; };
 		D1A1D8F61CEA4BEB00927C86 /* CPFMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFMeViewController.h; sourceTree = "<group>"; };
 		D1A1D8F71CEA4BEB00927C86 /* CPFMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFMeViewController.m; sourceTree = "<group>"; };
+		D1A1D8F91CEA50A400927C86 /* CPFMessageListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFMessageListViewCell.h; sourceTree = "<group>"; };
+		D1A1D8FA1CEA50A400927C86 /* CPFMessageListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFMessageListViewCell.m; sourceTree = "<group>"; };
+		D1A1D8FC1CEA5A8100927C86 /* CPFMessageListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPFMessageListViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +214,9 @@
 				D154D3191CEA1843004A4ABB /* LaunchScreen.storyboard */,
 				D154D31C1CEA1843004A4ABB /* Info.plist */,
 				D154D30B1CEA1843004A4ABB /* Supporting Files */,
+				D1A1D8F91CEA50A400927C86 /* CPFMessageListViewCell.h */,
+				D1A1D8FA1CEA50A400927C86 /* CPFMessageListViewCell.m */,
+				D1A1D8FC1CEA5A8100927C86 /* CPFMessageListViewCell.xib */,
 			);
 			path = "即时通信";
 			sourceTree = "<group>";
@@ -555,6 +563,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1A1D8FD1CEA5A8100927C86 /* CPFMessageListViewCell.xib in Resources */,
 				D1A1D8D31CEA22F400927C86 /* EaseMob.bundle in Resources */,
 				D154D31B1CEA1843004A4ABB /* LaunchScreen.storyboard in Resources */,
 				D154D3181CEA1843004A4ABB /* Assets.xcassets in Resources */,
@@ -569,6 +578,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1A1D8F51CEA4BBD00927C86 /* CPFFriendListController.m in Sources */,
+				D1A1D8FB1CEA50A400927C86 /* CPFMessageListViewCell.m in Sources */,
 				D1A1D8E91CEA2D0700927C86 /* CPFNavigationController.m in Sources */,
 				D154D3131CEA1843004A4ABB /* ViewController.m in Sources */,
 				D1A1D8EF1CEA3D0C00927C86 /* CPFContentView.m in Sources */,

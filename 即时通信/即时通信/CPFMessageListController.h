@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CPFMessageListViewCell.h"
 
-@interface CPFMessageListController : UITableViewController
+@interface CPFMessageListController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
