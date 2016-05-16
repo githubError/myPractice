@@ -19,9 +19,14 @@
     // 设置导航栏背景图片
     UINavigationBar *bar = [UINavigationBar appearance];
     [bar setBackgroundImage:[UIImage imageNamed:@"topbarbg"] forBarMetrics:UIBarMetricsDefault];
+    [bar setBackgroundColor:[UIColor colorWithRed:55/255 green:50/255 blue:60/255 alpha:1.0]];
+    
+    // 设置导航栏文字颜色和大小
+    [bar setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName : [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]}];
     
     // 设置item
     UIBarButtonItem *item = [UIBarButtonItem appearance];
+    
     // UIControlStateNormal
     NSMutableDictionary *itemAttrs = [NSMutableDictionary dictionary];
     itemAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
@@ -41,6 +46,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 /*

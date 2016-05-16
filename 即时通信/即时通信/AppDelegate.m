@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "EaseMob.h"
 #import "CPFNavigationController.h"
+#import "CPFTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -21,13 +22,15 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    CPFNavigationController *navigationController = [[CPFNavigationController alloc] init];
+    CPFTabBarController *tabBarController = [[CPFTabBarController alloc] init];
     
-    self.window.rootViewController = navigationController;
-    
-    
+    self.window.rootViewController = tabBarController;
+     
     
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    
+    
     [self.window makeKeyAndVisible];
     
     // 加入环信即时通信SDK，配置AppKey

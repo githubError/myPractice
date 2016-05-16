@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CPFContentView.h"
 
 @interface CPFNavigationController : UINavigationController
+
+@property (nonatomic, weak) CPFContentView *contentView;
 
 @end
