@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "EaseMob.h"
+#import "CPFNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -18,8 +19,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    CPFNavigationController *navigationController = [[CPFNavigationController alloc] init];
+    
+    self.window.rootViewController = navigationController;
     
     
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    // 加入环信即时通信SDK，配置AppKey
     [[EaseMob sharedInstance] registerSDKWithAppKey:@"cuipengfei#myim" apnsCertName:@""];
     
     return YES;

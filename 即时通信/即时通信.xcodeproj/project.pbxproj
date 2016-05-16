@@ -23,6 +23,7 @@
 		D1A1D8E11CEA243900927C86 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A1D8E01CEA243900927C86 /* libresolv.tbd */; };
 		D1A1D8E31CEA244700927C86 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A1D8E21CEA244700927C86 /* libxml2.tbd */; };
 		D1A1D8E61CEA274B00927C86 /* FixFopen.c in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8E51CEA274B00927C86 /* FixFopen.c */; };
+		D1A1D8E91CEA2D0700927C86 /* CPFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8E81CEA2D0700927C86 /* CPFNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,8 @@
 		D1A1D8E01CEA243900927C86 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		D1A1D8E21CEA244700927C86 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		D1A1D8E51CEA274B00927C86 /* FixFopen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = FixFopen.c; sourceTree = "<group>"; };
+		D1A1D8E71CEA2D0700927C86 /* CPFNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFNavigationController.h; sourceTree = "<group>"; };
+		D1A1D8E81CEA2D0700927C86 /* CPFNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,8 @@
 			children = (
 				D154D30E1CEA1843004A4ABB /* AppDelegate.h */,
 				D154D30F1CEA1843004A4ABB /* AppDelegate.m */,
+				D1A1D8E71CEA2D0700927C86 /* CPFNavigationController.h */,
+				D1A1D8E81CEA2D0700927C86 /* CPFNavigationController.m */,
 				D154D3111CEA1843004A4ABB /* ViewController.h */,
 				D154D3121CEA1843004A4ABB /* ViewController.m */,
 				D154D3171CEA1843004A4ABB /* Assets.xcassets */,
@@ -492,6 +497,7 @@
 		D154D3001CEA1843004A4ABB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = CPF;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = cuipengfei;
 				TargetAttributes = {
@@ -537,6 +543,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1A1D8E91CEA2D0700927C86 /* CPFNavigationController.m in Sources */,
 				D154D3131CEA1843004A4ABB /* ViewController.m in Sources */,
 				D154D3101CEA1843004A4ABB /* AppDelegate.m in Sources */,
 				D1A1D8E61CEA274B00927C86 /* FixFopen.c in Sources */,
