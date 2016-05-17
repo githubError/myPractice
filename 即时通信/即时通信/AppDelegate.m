@@ -10,8 +10,13 @@
 #import "EaseMob.h"
 #import "CPFNavigationController.h"
 #import "CPFTabBarController.h"
+#import "CPFLoginViewController.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) CPFTabBarController *tabBarController;
+
+@property (nonatomic, strong) CPFLoginViewController *loginViewController;
 
 @end
 
@@ -22,9 +27,9 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    CPFTabBarController *tabBarController = [[CPFTabBarController alloc] init];
+    _loginViewController = [[CPFLoginViewController alloc] init];
     
-    self.window.rootViewController = tabBarController;
+    self.window.rootViewController = _loginViewController;
      
     
     self.window.backgroundColor = [UIColor whiteColor];
@@ -34,9 +39,21 @@
     [self.window makeKeyAndVisible];
     
     // 加入环信即时通信SDK，配置AppKey
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"cuipengfei#myim" apnsCertName:@""];
+    
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"cuipengfei#myim" apnsCertName:nil otherConfig:@{kSDKConfigEnableConsoleLogger: @0}];
     
     return YES;
+}
+
+// 登录成功
+- (void)isLoginSuccess{
+    _tabBarController = [[CPFTabBarController alloc] init];
+    self.window.rootViewController = _tabBarController;
+}
+
+// 退出登录
+- (void)isLogoffSuccess {
+    _loginViewController = [[CPFLoginViewController alloc] init];
 }
 
 // App进入后台

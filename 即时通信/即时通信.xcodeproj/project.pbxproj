@@ -11,6 +11,13 @@
 		D154D3101CEA1843004A4ABB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D154D30F1CEA1843004A4ABB /* AppDelegate.m */; };
 		D154D3181CEA1843004A4ABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D154D3171CEA1843004A4ABB /* Assets.xcassets */; };
 		D154D31B1CEA1843004A4ABB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D154D3191CEA1843004A4ABB /* LaunchScreen.storyboard */; };
+		D15515C81CEB5E7B009B33BF /* CPFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15515C71CEB5E7B009B33BF /* CPFLoginViewController.m */; };
+		D15515CC1CEB6F5D009B33BF /* CPFButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D15515CB1CEB6F5D009B33BF /* CPFButton.m */; };
+		D15515D01CEB7688009B33BF /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = D15515CF1CEB7688009B33BF /* UIViewExt.m */; };
+		D15515DD1CEB987A009B33BF /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = D15515DA1CEB987A009B33BF /* MBProgressHUD+Add.m */; };
+		D15515DE1CEB987A009B33BF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D15515DC1CEB987A009B33BF /* MBProgressHUD.m */; };
+		D155171B1CEB99A0009B33BF /* TKAlertCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D15517181CEB99A0009B33BF /* TKAlertCenter.m */; };
+		D155171C1CEB99A0009B33BF /* UIView+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D155171A1CEB99A0009B33BF /* UIView+TKCategory.m */; };
 		D1A1D8D11CEA22F400927C86 /* libEaseMobClientSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A1D8CD1CEA22F400927C86 /* libEaseMobClientSDK.a */; };
 		D1A1D8D31CEA22F400927C86 /* EaseMob.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D1A1D8D01CEA22F400927C86 /* EaseMob.bundle */; };
 		D1A1D8D51CEA23DF00927C86 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A1D8D41CEA23DF00927C86 /* MobileCoreServices.framework */; };
@@ -40,6 +47,20 @@
 		D154D3171CEA1843004A4ABB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D154D31A1CEA1843004A4ABB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D154D31C1CEA1843004A4ABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D15515C61CEB5E7B009B33BF /* CPFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFLoginViewController.h; sourceTree = "<group>"; };
+		D15515C71CEB5E7B009B33BF /* CPFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFLoginViewController.m; sourceTree = "<group>"; };
+		D15515CA1CEB6F5D009B33BF /* CPFButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFButton.h; sourceTree = "<group>"; };
+		D15515CB1CEB6F5D009B33BF /* CPFButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFButton.m; sourceTree = "<group>"; };
+		D15515CE1CEB7688009B33BF /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
+		D15515CF1CEB7688009B33BF /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		D15515D91CEB987A009B33BF /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
+		D15515DA1CEB987A009B33BF /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		D15515DB1CEB987A009B33BF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		D15515DC1CEB987A009B33BF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		D15517171CEB99A0009B33BF /* TKAlertCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAlertCenter.h; sourceTree = "<group>"; };
+		D15517181CEB99A0009B33BF /* TKAlertCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAlertCenter.m; sourceTree = "<group>"; };
+		D15517191CEB99A0009B33BF /* UIView+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TKCategory.h"; sourceTree = "<group>"; };
+		D155171A1CEB99A0009B33BF /* UIView+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TKCategory.m"; sourceTree = "<group>"; };
 		D1A1D8681CEA22F400927C86 /* EMCallManagerCallDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallManagerCallDelegate.h; sourceTree = "<group>"; };
 		D1A1D8691CEA22F400927C86 /* EMCallManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallManagerDelegate.h; sourceTree = "<group>"; };
 		D1A1D86A1CEA22F400927C86 /* EaseMob+CallService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EaseMob+CallService.h"; sourceTree = "<group>"; };
@@ -199,12 +220,13 @@
 				D1A1D8E81CEA2D0700927C86 /* CPFNavigationController.m */,
 				D1A1D8ED1CEA3D0C00927C86 /* CPFContentView.h */,
 				D1A1D8EE1CEA3D0C00927C86 /* CPFContentView.m */,
-				D15515C41CEB5D70009B33BF /* Me */,
-				D15515C31CEB5D5D009B33BF /* FriendsList */,
+				D15515C51CEB5E44009B33BF /* Login */,
 				D15515C21CEB5CF4009B33BF /* MessageList */,
-				D154D3171CEA1843004A4ABB /* Assets.xcassets */,
-				D154D3191CEA1843004A4ABB /* LaunchScreen.storyboard */,
-				D154D31C1CEA1843004A4ABB /* Info.plist */,
+				D15515C31CEB5D5D009B33BF /* FriendsList */,
+				D15515C41CEB5D70009B33BF /* Me */,
+				D15515C91CEB6F3C009B33BF /* other */,
+				D15515D81CEB987A009B33BF /* HUD */,
+				D15517161CEB99A0009B33BF /* TKAlertView */,
 				D154D30B1CEA1843004A4ABB /* Supporting Files */,
 			);
 			path = "即时通信";
@@ -213,6 +235,9 @@
 		D154D30B1CEA1843004A4ABB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D154D3171CEA1843004A4ABB /* Assets.xcassets */,
+				D154D3191CEA1843004A4ABB /* LaunchScreen.storyboard */,
+				D154D31C1CEA1843004A4ABB /* Info.plist */,
 				D154D30C1CEA1843004A4ABB /* main.m */,
 			);
 			name = "Supporting Files";
@@ -246,6 +271,48 @@
 				D1A1D8F71CEA4BEB00927C86 /* CPFMeViewController.m */,
 			);
 			name = Me;
+			sourceTree = "<group>";
+		};
+		D15515C51CEB5E44009B33BF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D15515C61CEB5E7B009B33BF /* CPFLoginViewController.h */,
+				D15515C71CEB5E7B009B33BF /* CPFLoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		D15515C91CEB6F3C009B33BF /* other */ = {
+			isa = PBXGroup;
+			children = (
+				D15515CE1CEB7688009B33BF /* UIViewExt.h */,
+				D15515CF1CEB7688009B33BF /* UIViewExt.m */,
+				D15515CA1CEB6F5D009B33BF /* CPFButton.h */,
+				D15515CB1CEB6F5D009B33BF /* CPFButton.m */,
+			);
+			name = other;
+			sourceTree = "<group>";
+		};
+		D15515D81CEB987A009B33BF /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				D15515D91CEB987A009B33BF /* MBProgressHUD+Add.h */,
+				D15515DA1CEB987A009B33BF /* MBProgressHUD+Add.m */,
+				D15515DB1CEB987A009B33BF /* MBProgressHUD.h */,
+				D15515DC1CEB987A009B33BF /* MBProgressHUD.m */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
+		D15517161CEB99A0009B33BF /* TKAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				D15517171CEB99A0009B33BF /* TKAlertCenter.h */,
+				D15517181CEB99A0009B33BF /* TKAlertCenter.m */,
+				D15517191CEB99A0009B33BF /* UIView+TKCategory.h */,
+				D155171A1CEB99A0009B33BF /* UIView+TKCategory.m */,
+			);
+			path = TKAlertView;
 			sourceTree = "<group>";
 		};
 		D1A1D8631CEA22F400927C86 /* EaseMobSDK */ = {
@@ -598,14 +665,21 @@
 			files = (
 				D1A1D8F51CEA4BBD00927C86 /* CPFFriendListController.m in Sources */,
 				D1A1D8FB1CEA50A400927C86 /* CPFMessageListViewCell.m in Sources */,
+				D155171B1CEB99A0009B33BF /* TKAlertCenter.m in Sources */,
 				D1A1D8E91CEA2D0700927C86 /* CPFNavigationController.m in Sources */,
 				D1A1D8EF1CEA3D0C00927C86 /* CPFContentView.m in Sources */,
 				D1A1D8F21CEA3F0400927C86 /* CPFMessageListController.m in Sources */,
 				D154D3101CEA1843004A4ABB /* AppDelegate.m in Sources */,
 				D1A1D8F81CEA4BEB00927C86 /* CPFMeViewController.m in Sources */,
+				D15515DE1CEB987A009B33BF /* MBProgressHUD.m in Sources */,
+				D15515DD1CEB987A009B33BF /* MBProgressHUD+Add.m in Sources */,
+				D15515CC1CEB6F5D009B33BF /* CPFButton.m in Sources */,
 				D1A1D8E61CEA274B00927C86 /* FixFopen.c in Sources */,
+				D15515D01CEB7688009B33BF /* UIViewExt.m in Sources */,
+				D15515C81CEB5E7B009B33BF /* CPFLoginViewController.m in Sources */,
 				D154D30D1CEA1843004A4ABB /* main.m in Sources */,
 				D1A1D8EC1CEA398800927C86 /* CPFTabBarController.m in Sources */,
+				D155171C1CEB99A0009B33BF /* UIView+TKCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,6 +781,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "即时通信/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -723,6 +798,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "即时通信/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

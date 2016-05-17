@@ -13,5 +13,8 @@
 @property (strong, nonatomic) UIWindow *window;
 
 
+- (void)isLoginSuccess;
+- (void)isLogoffSuccess;
+
 @end
 
