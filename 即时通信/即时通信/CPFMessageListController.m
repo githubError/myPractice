@@ -24,7 +24,7 @@
     
     UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
     addButton.bounds = CGRectMake(0, 0, 40, 40);
-    [addButton setImage:[UIImage imageNamed:@"add_friend_searchicon"] forState:UIControlStateNormal];
+    [addButton setImage:[UIImage imageNamed:@"contacts_add_friend"] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(addButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
     
