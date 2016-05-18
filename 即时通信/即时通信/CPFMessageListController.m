@@ -22,11 +22,17 @@
     
     [self.tableView registerNib:nib forCellReuseIdentifier:@"messageCell"];
     
+    UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    addButton.bounds = CGRectMake(0, 0, 40, 40);
+    [addButton setImage:[UIImage imageNamed:@"add_friend_searchicon"] forState:UIControlStateNormal];
+    [addButton addTarget:self action:@selector(addButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+// addButton响应事件
+- (void)addButtonClick {
+    
 }
 
 #pragma mark - 数据源方法
