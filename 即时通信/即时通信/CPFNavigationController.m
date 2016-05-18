@@ -7,8 +7,9 @@
 //
 
 #import "CPFNavigationController.h"
+#import "EaseMob.h"
 
-@interface CPFNavigationController ()
+@interface CPFNavigationController () <EMChatManagerDelegate>
 
 @end
 
@@ -43,24 +44,24 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+// 即将自动连接
+- (void)willAutoReconnect {
+    self.title = @"正在连接...";
 }
 
+// 自动连接完成
+- (void)didAutoReconnectFinishedWithError:(NSError *)error {
+    
+}
+
+//
+- (void)didConnectionStateChanged:(EMConnectionState)connectionState {
+    self.title = (connectionState == 0)?@"连接成功":@"未连接";
+}
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
