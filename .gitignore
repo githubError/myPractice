@@ -26,7 +26,7 @@ xcuserdata
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
-
+**/EaseMobSDK
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However
