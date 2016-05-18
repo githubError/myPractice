@@ -37,8 +37,12 @@
 // addButton响应事件
 - (void)addButtonClick:(UIButton *)btn {
     DXPopover *addPopover = [DXPopover popover];
+    [addPopover setBackgroundColor:[UIColor clearColor]];
+    addPopover.backgroundColor = [UIColor colorWithRed:0.17 green:0.17 blue:0.17 alpha:0.85];
+    
+    
     CPFPopoverView *popover = [[CPFPopoverView alloc] init];
-    [addPopover showAtPoint:CGPointMake(btn.left + 20, btn.bottom - 40) popoverPostion:DXPopoverPositionDown withContentView:popover inView:self.tableView];
+    [addPopover showAtPoint:CGPointMake(btn.left + 20, btn.bottom - 40) popoverPostion:DXPopoverPositionDown withContentView:popover inView:self.view];
 }
 
 #pragma mark - 数据源方法
