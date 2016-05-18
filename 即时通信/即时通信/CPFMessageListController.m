@@ -7,6 +7,9 @@
 //
 
 #import "CPFMessageListController.h"
+#import "DXPopover.h"
+#import "UIViewExt.h"
+#import "CPFPopoverView.h"
 
 @interface CPFMessageListController ()
 
@@ -25,14 +28,17 @@
     UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
     addButton.bounds = CGRectMake(0, 0, 40, 40);
     [addButton setImage:[UIImage imageNamed:@"contacts_add_friend"] forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(addButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [addButton addTarget:self action:@selector(addButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
     
 }
 
 // addButton响应事件
-- (void)addButtonClick {
-    
+- (void)addButtonClick:(UIButton *)btn {
+    DXPopover *addPopover = [DXPopover popover];
+    CPFPopoverView *popover = [[CPFPopoverView alloc] init];
+    [addPopover showAtPoint:CGPointMake(btn.left + 20, btn.bottom - 40) popoverPostion:DXPopoverPositionDown withContentView:popover inView:self.tableView];
 }
 
 #pragma mark - 数据源方法

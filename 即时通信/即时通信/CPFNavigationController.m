@@ -51,12 +51,13 @@
 
 // 自动连接完成
 - (void)didAutoReconnectFinishedWithError:(NSError *)error {
-    
+    NSLog(@"自动连接完成");
 }
 
 //
 - (void)didConnectionStateChanged:(EMConnectionState)connectionState {
     self.title = (connectionState == 0)?@"连接成功":@"未连接";
+    NSLog(@"网络状态改变");
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

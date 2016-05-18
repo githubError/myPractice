@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D124D4B51CECBE79005BDB21 /* CPFPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = D124D4B41CECBE79005BDB21 /* CPFPopoverView.m */; };
 		D14B0D861CEC82EF0099833A /* DXPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = D14B0D851CEC82EF0099833A /* DXPopover.m */; };
 		D154D30D1CEA1843004A4ABB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D154D30C1CEA1843004A4ABB /* main.m */; };
 		D154D3101CEA1843004A4ABB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D154D30F1CEA1843004A4ABB /* AppDelegate.m */; };
@@ -41,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D124D4B31CECBE79005BDB21 /* CPFPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFPopoverView.h; sourceTree = "<group>"; };
+		D124D4B41CECBE79005BDB21 /* CPFPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFPopoverView.m; sourceTree = "<group>"; };
 		D14B0D841CEC82EF0099833A /* DXPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXPopover.h; sourceTree = "<group>"; };
 		D14B0D851CEC82EF0099833A /* DXPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXPopover.m; sourceTree = "<group>"; };
 		D154D3081CEA1843004A4ABB /* 即时通信.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "即时通信.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,6 +257,8 @@
 				D1A1D8F91CEA50A400927C86 /* CPFMessageListViewCell.h */,
 				D1A1D8FA1CEA50A400927C86 /* CPFMessageListViewCell.m */,
 				D1A1D8FC1CEA5A8100927C86 /* CPFMessageListViewCell.xib */,
+				D124D4B31CECBE79005BDB21 /* CPFPopoverView.h */,
+				D124D4B41CECBE79005BDB21 /* CPFPopoverView.m */,
 			);
 			name = MessageList;
 			sourceTree = "<group>";
@@ -678,6 +683,7 @@
 				D155179D1CEBBF07009B33BF /* FixFopen.c in Sources */,
 				D1A1D8F81CEA4BEB00927C86 /* CPFMeViewController.m in Sources */,
 				D15517931CEBBE10009B33BF /* MBProgressHUD+Add.m in Sources */,
+				D124D4B51CECBE79005BDB21 /* CPFPopoverView.m in Sources */,
 				D15515CC1CEB6F5D009B33BF /* CPFButton.m in Sources */,
 				D15515D01CEB7688009B33BF /* UIViewExt.m in Sources */,
 				D155179A1CEBBE1A009B33BF /* TKAlertCenter.m in Sources */,
@@ -787,6 +793,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "即时通信/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -804,6 +812,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "即时通信/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
