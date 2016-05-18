@@ -11,6 +11,7 @@
 #import "CPFNavigationController.h"
 #import "CPFTabBarController.h"
 #import "CPFLoginViewController.h"
+#import "MBProgressHUD+Add.h"
 
 @interface AppDelegate ()
 
@@ -41,6 +42,16 @@
     // 加入环信即时通信SDK，配置AppKey
     
     [[EaseMob sharedInstance] registerSDKWithAppKey:@"cuipengfei#myim" apnsCertName:nil otherConfig:@{kSDKConfigEnableConsoleLogger: @0}];
+    
+    
+    // 添加自动登录
+    if ([[EaseMob sharedInstance].chatManager isAutoLoginEnabled]) {
+        
+        [MBProgressHUD showMessag:@"正在登陆..." toView:self.window];
+        
+        [self isLoginSuccess];
+    }
+    
     
     return YES;
 }

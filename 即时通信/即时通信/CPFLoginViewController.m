@@ -106,8 +106,8 @@
                 [appDelegate isLoginSuccess];
                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 
+                // 允许自动登录
                 [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
-                [[EaseMob sharedInstance].chatManager enableAutoLogin];
             }
         } onQueue:dispatch_get_main_queue()];
     };
