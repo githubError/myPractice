@@ -31,11 +31,8 @@
     _loginViewController = [[CPFLoginViewController alloc] init];
     
     self.window.rootViewController = _loginViewController;
-     
     
     self.window.backgroundColor = [UIColor whiteColor];
-    
-    
     
     [self.window makeKeyAndVisible];
     

@@ -55,6 +55,8 @@
     userNameField.frame = CGRectMake(userNameButton.right + 10, userNameButton.top, 160, 25);
     userNameField.backgroundColor = [UIColor lightGrayColor];
     userNameField.borderStyle = UITextBorderStyleRoundedRect;
+    userNameField.placeholder = @"输入用户名";
+    userNameField.keyboardType = UIKeyboardTypeEmailAddress;
     
     _userNameField = userNameField;
     
@@ -90,6 +92,10 @@
     
     loginButton.clickBlock = ^(CPFButton *btn){
         
+        // 关闭键盘
+        [_userNameField resignFirstResponder];
+        [_passwordField resignFirstResponder];
+        
         if (_userNameField.text.length == 0) {
             [[TKAlertCenter defaultCenter] postAlertWithMessage:@"请输入用户名"];
             return ;
@@ -108,6 +114,9 @@
                 
                 // 允许自动登录
                 [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
+            }else {
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                [[TKAlertCenter defaultCenter] postAlertWithMessage:@"用户名或密码错误"];
             }
         } onQueue:dispatch_get_main_queue()];
     };
