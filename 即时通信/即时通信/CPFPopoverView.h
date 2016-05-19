@@ -8,11 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CPFCustomMenuDelegate <NSObject>
 
+- (void)CPFCustomMenu:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
-@interface CPFPopoverView : UIView
+@end
 
-@property (nonatomic, strong) UIButton *addFriendButton;
-@property (nonatomic, strong) UIButton *addGroupButton;
+typedef void(^Dismiss)(void);
+
+@interface CPFPopoverView : UIView <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, assign) id<CPFCustomMenuDelegate> delegate;
+@property (nonatomic, strong) NSArray *arrData;
+@property (nonatomic, strong) NSArray *arrImgName;
+@property (nonatomic, copy) Dismiss dismiss;
+
+- (instancetype)initWithDataArr:(NSArray *)dataArr origin:(CGPoint)origin width:(CGFloat)width rowHeight:(CGFloat)rowHeight;
+
+- (void)dismissWithCompletion:(void (^)(CPFPopoverView *object))completion;
 
 @end

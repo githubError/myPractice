@@ -11,7 +11,9 @@
 #import "UIViewExt.h"
 #import "CPFPopoverView.h"
 
-@interface CPFMessageListController ()
+@interface CPFMessageListController () <CPFCustomMenuDelegate>
+
+@property (nonatomic, strong) CPFPopoverView *menu;
 
 @end
 
@@ -36,12 +38,24 @@
 
 // addButton响应事件
 - (void)addButtonClick:(UIButton *)btn {
-    DXPopover *addPopover = [DXPopover popover];
-    [addPopover setBackgroundColor:[UIColor clearColor]];
-    addPopover.backgroundColor = [UIColor colorWithRed:0.17 green:0.17 blue:0.17 alpha:0.85];
+    __weak __typeof(self) weakSelf = self;
+    if (!self.menu) {
+        self.menu = [[CPFPopoverView alloc] initWithDataArr:@[@"添加好友", @"加入群聊"] origin:CGPointMake(200, 70) width:125 rowHeight:44];
+        _menu.delegate = self;
+        _menu.dismiss = ^() {
+            weakSelf.menu = nil;
+        };
+        _menu.arrImgName = @[@"item_school.png", @"item_battle.png", @"item_list.png", @"item_chat.png", @"item_share.png"];
+        [self.view addSubview:_menu];
+    } else {
+        [_menu dismissWithCompletion:^(CPFPopoverView *object) {
+            weakSelf.menu = nil;
+        }];
+    }
+}
 
-    CPFPopoverView *popover = [[CPFPopoverView alloc] init];
-    [addPopover showAtPoint:CGPointMake(btn.left + 20, btn.bottom - 40) popoverPostion:DXPopoverPositionDown withContentView:popover inView:self.view];
+- (void)CPFCustomMenu:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"select: %d", indexPath.row);
 }
 
 #pragma mark - 数据源方法
