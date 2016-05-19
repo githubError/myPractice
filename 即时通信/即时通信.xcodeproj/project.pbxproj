@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1043C691CEE53FF00BFA8FD /* CPFSearchFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1043C681CEE53FF00BFA8FD /* CPFSearchFriendViewController.m */; };
 		D124D4B51CECBE79005BDB21 /* CPFPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = D124D4B41CECBE79005BDB21 /* CPFPopoverView.m */; };
 		D14B0D861CEC82EF0099833A /* DXPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = D14B0D851CEC82EF0099833A /* DXPopover.m */; };
 		D154D30D1CEA1843004A4ABB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D154D30C1CEA1843004A4ABB /* main.m */; };
@@ -42,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D1043C671CEE53FF00BFA8FD /* CPFSearchFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFSearchFriendViewController.h; sourceTree = "<group>"; };
+		D1043C681CEE53FF00BFA8FD /* CPFSearchFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFSearchFriendViewController.m; sourceTree = "<group>"; };
 		D124D4B31CECBE79005BDB21 /* CPFPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFPopoverView.h; sourceTree = "<group>"; };
 		D124D4B41CECBE79005BDB21 /* CPFPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFPopoverView.m; sourceTree = "<group>"; };
 		D14B0D841CEC82EF0099833A /* DXPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXPopover.h; sourceTree = "<group>"; };
@@ -197,6 +200,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D1043C601CEE4E5E00BFA8FD /* Add News */ = {
+			isa = PBXGroup;
+			children = (
+				D1043C671CEE53FF00BFA8FD /* CPFSearchFriendViewController.h */,
+				D1043C681CEE53FF00BFA8FD /* CPFSearchFriendViewController.m */,
+			);
+			name = "Add News";
+			sourceTree = "<group>";
+		};
 		D154D2FF1CEA1843004A4ABB = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +245,7 @@
 				D15515C31CEB5D5D009B33BF /* FriendsList */,
 				D15515C41CEB5D70009B33BF /* Me */,
 				D15515C91CEB6F3C009B33BF /* other */,
+				D1043C601CEE4E5E00BFA8FD /* Add News */,
 				D154D30B1CEA1843004A4ABB /* Supporting Files */,
 			);
 			path = "即时通信";
@@ -691,6 +704,7 @@
 				D154D30D1CEA1843004A4ABB /* main.m in Sources */,
 				D1A1D8EC1CEA398800927C86 /* CPFTabBarController.m in Sources */,
 				D15517941CEBBE10009B33BF /* MBProgressHUD.m in Sources */,
+				D1043C691CEE53FF00BFA8FD /* CPFSearchFriendViewController.m in Sources */,
 				D155179B1CEBBE1A009B33BF /* UIView+TKCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

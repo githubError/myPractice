@@ -8,12 +8,25 @@
 
 #import "CPFPopoverView.h"
 #import "UIViewExt.h"
+#import "CPFSearchFriendViewController.h"
+
+@interface CPFPopoverView ()
+
+@property (nonatomic, strong) UIViewController *controller;
+
+@end
 
 @implementation CPFPopoverView
 
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+        
+        UIView *next = [self superview];
+        UIResponder *nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            _controller = (UIViewController *)nextResponder;
+        }
         
         _addFriendButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _addGroupButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -39,6 +52,8 @@
 
 - (void)addFriend {
     NSLog(@"添加好友");
+    CPFSearchFriendViewController *searchView = [[CPFSearchFriendViewController alloc] init];
+    [_controller.navigationController pushViewController:searchView animated:YES];
 }
 
 - (void)addGroup {
