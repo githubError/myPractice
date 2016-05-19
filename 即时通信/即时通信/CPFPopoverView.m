@@ -39,6 +39,7 @@
         self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(origin.x + LeftToView, origin.y + TopToView, width, rowHeight * dataArr.count) style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.delegate = self;
+        
         [self addSubview:_tableView];
         _tableView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
         _tableView.layer.cornerRadius = 2;
@@ -160,13 +161,13 @@
     CGContextBeginPath(context);//标记
     
     CGContextMoveToPoint(context,
-                         LeftToView * 2.5, TopToView * 0.5);//设置起点
+                         LeftToView * 2.5 + 258, TopToView * 0.5);//设置起点
     
     CGContextAddLineToPoint(context,
-                            LeftToView * 2, TopToView);
+                            LeftToView * 2+ 258, TopToView);
     
     CGContextAddLineToPoint(context,
-                            LeftToView * 3, TopToView);
+                            LeftToView * 3 + 258, TopToView);
     
     CGContextClosePath(context);//路径结束标志，不写默认封闭
     
