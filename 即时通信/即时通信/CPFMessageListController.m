@@ -40,12 +40,12 @@
 - (void)addButtonClick:(UIButton *)btn {
     __weak __typeof(self) weakSelf = self;
     if (!self.menu) {
-        self.menu = [[CPFPopoverView alloc] initWithDataArr:@[@"添加好友", @"加入群聊"] origin:CGPointMake(200, 70) width:125 rowHeight:44];
+        self.menu = [[CPFPopoverView alloc] initWithDataArr:@[@"添加好友", @"加入群聊"] origin:CGPointMake(180, 0) width:125 rowHeight:44];
         _menu.delegate = self;
         _menu.dismiss = ^() {
             weakSelf.menu = nil;
         };
-        _menu.arrImgName = @[@"item_school.png", @"item_battle.png", @"item_list.png", @"item_chat.png", @"item_share.png"];
+        _menu.arrImgName = @[@"contacts_add_friend", @"contacts_add_newmessage"];
         [self.view addSubview:_menu];
     } else {
         [_menu dismissWithCompletion:^(CPFPopoverView *object) {
