@@ -7,9 +7,9 @@
 //
 
 #import "CPFMessageListController.h"
-#import "DXPopover.h"
 #import "UIViewExt.h"
 #import "CPFPopoverView.h"
+#import "CPFSearchFriendViewController.h"
 
 @interface CPFMessageListController () <CPFCustomMenuDelegate>
 
@@ -40,7 +40,7 @@
 - (void)addButtonClick:(UIButton *)btn {
     __weak __typeof(self) weakSelf = self;
     if (!self.menu) {
-        self.menu = [[CPFPopoverView alloc] initWithDataArr:@[@"添加好友", @"加入群聊"] origin:CGPointMake(180, 0) width:125 rowHeight:44];
+        self.menu = [[CPFPopoverView alloc] initWithDataArr:@[@"添加好友", @"加入群聊"] origin:CGPointMake(160, 0) width:140 rowHeight:44];
         _menu.delegate = self;
         _menu.dismiss = ^() {
             weakSelf.menu = nil;
@@ -56,6 +56,10 @@
 
 - (void)CPFCustomMenu:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"select: %d", indexPath.row);
+    if (indexPath.row == 0) {
+        CPFSearchFriendViewController *searchViewController = [[CPFSearchFriendViewController alloc] init];
+        [self.navigationController pushViewController:searchViewController animated:YES];
+    }
 }
 
 #pragma mark - 数据源方法

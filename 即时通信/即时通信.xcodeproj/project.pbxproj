@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D1043C691CEE53FF00BFA8FD /* CPFSearchFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1043C681CEE53FF00BFA8FD /* CPFSearchFriendViewController.m */; };
 		D124D4B51CECBE79005BDB21 /* CPFPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = D124D4B41CECBE79005BDB21 /* CPFPopoverView.m */; };
-		D14B0D861CEC82EF0099833A /* DXPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = D14B0D851CEC82EF0099833A /* DXPopover.m */; };
 		D154D30D1CEA1843004A4ABB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D154D30C1CEA1843004A4ABB /* main.m */; };
 		D154D3101CEA1843004A4ABB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D154D30F1CEA1843004A4ABB /* AppDelegate.m */; };
 		D154D3181CEA1843004A4ABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D154D3171CEA1843004A4ABB /* Assets.xcassets */; };
@@ -47,8 +46,6 @@
 		D1043C681CEE53FF00BFA8FD /* CPFSearchFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFSearchFriendViewController.m; sourceTree = "<group>"; };
 		D124D4B31CECBE79005BDB21 /* CPFPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFPopoverView.h; sourceTree = "<group>"; };
 		D124D4B41CECBE79005BDB21 /* CPFPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFPopoverView.m; sourceTree = "<group>"; };
-		D14B0D841CEC82EF0099833A /* DXPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXPopover.h; sourceTree = "<group>"; };
-		D14B0D851CEC82EF0099833A /* DXPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXPopover.m; sourceTree = "<group>"; };
 		D154D3081CEA1843004A4ABB /* 即时通信.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "即时通信.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D154D30C1CEA1843004A4ABB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D154D30E1CEA1843004A4ABB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -310,8 +307,6 @@
 				D15515CF1CEB7688009B33BF /* UIViewExt.m */,
 				D15515CA1CEB6F5D009B33BF /* CPFButton.h */,
 				D15515CB1CEB6F5D009B33BF /* CPFButton.m */,
-				D14B0D841CEC82EF0099833A /* DXPopover.h */,
-				D14B0D851CEC82EF0099833A /* DXPopover.m */,
 			);
 			name = other;
 			sourceTree = "<group>";
@@ -691,7 +686,6 @@
 				D1A1D8E91CEA2D0700927C86 /* CPFNavigationController.m in Sources */,
 				D1A1D8EF1CEA3D0C00927C86 /* CPFContentView.m in Sources */,
 				D1A1D8F21CEA3F0400927C86 /* CPFMessageListController.m in Sources */,
-				D14B0D861CEC82EF0099833A /* DXPopover.m in Sources */,
 				D154D3101CEA1843004A4ABB /* AppDelegate.m in Sources */,
 				D155179D1CEBBF07009B33BF /* FixFopen.c in Sources */,
 				D1A1D8F81CEA4BEB00927C86 /* CPFMeViewController.m in Sources */,
