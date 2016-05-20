@@ -9,7 +9,7 @@
 #import "CPFSearchFriendViewController.h"
 #import "UIViewExt.h"
 
-@interface CPFSearchFriendViewController ()
+@interface CPFSearchFriendViewController () <UITextFieldDelegate>
 
 @end
 
@@ -17,31 +17,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _searchInfoField = [[UITextField alloc] initWithFrame:CGRectMake(20, 80, 240, 30)];
-    _searchInfoField.backgroundColor = [UIColor grayColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    _searchInfoField = [[UITextField alloc] initWithFrame:CGRectMake(20, 40, 240, 30)];
+    _searchInfoField.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.8];
     _searchButton = [CPFButton shareButton];
-    _searchButton.frame = CGRectMake(_searchInfoField.right + 10, 80, 30, 30);
+    _searchInfoField.borderStyle = UITextBorderStyleRoundedRect;
+    _searchInfoField.delegate = self;
+    _searchInfoField.placeholder = @"用户名/群组";
+    _searchButton.frame = CGRectMake(_searchInfoField.right, 40, 30, 30);
     [_searchButton setImage:[UIImage imageNamed:@"add_friend_searchicon"] forState:UIControlStateNormal];
     _searchButton.clickBlock = ^(CPFButton *btn){
         NSLog(@"_searchButtonClicked");
     };
-    [self.view addSubview:_searchButton];
     [self.view addSubview:_searchInfoField];
+    [self.view addSubview:_searchButton];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [_searchInfoField resignFirstResponder];
+    
+    
+    return YES;
 }
-*/
 
 @end

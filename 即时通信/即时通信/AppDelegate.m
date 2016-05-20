@@ -45,8 +45,6 @@
     // 添加自动登录
     if ([[EaseMob sharedInstance].chatManager isAutoLoginEnabled]) {
         
-        [MBProgressHUD showMessag:@"正在登陆..." toView:self.window];
-        
         [self isLoginSuccess];
     }
     
