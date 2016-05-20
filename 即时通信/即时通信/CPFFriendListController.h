@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CPFFriendListController : UITableViewController
+@interface CPFFriendListController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

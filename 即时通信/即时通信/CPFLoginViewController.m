@@ -114,6 +114,9 @@
                 
                 // 允许自动登录
                 [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
+                
+                // 自动获取好友列表
+                [[EaseMob sharedInstance].chatManager setIsAutoFetchBuddyList:YES];
             }else {
                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 [[TKAlertCenter defaultCenter] postAlertWithMessage:@"用户名或密码错误"];

@@ -10,8 +10,10 @@
 #import "UIViewExt.h"
 #import "CPFPopoverView.h"
 #import "CPFSearchFriendViewController.h"
+#import "EaseMob.h"
+#import "TKAlertCenter.h"
 
-@interface CPFMessageListController () <CPFCustomMenuDelegate>
+@interface CPFMessageListController () <CPFCustomMenuDelegate,EMChatManagerDelegate>
 
 @property (nonatomic, strong) CPFPopoverView *menu;
 
@@ -33,6 +35,9 @@
     [addButton addTarget:self action:@selector(addButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+    
+    // 设置代理
+    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
     
 }
 
@@ -91,48 +96,48 @@
     return 60.0;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+
+#pragma mark - EMCallManagerDelegate
+
+/**
+ *  @author 崔鹏飞, 2016-05-20 19:32:53
+ *
+ *  接受到好友申请时调用
+ *
+ *  @param username 申请人用户名
+ *  @param message  附加信息
+ */
+- (void)didReceiveBuddyRequest:(NSString *)username message:(NSString *)message {
+    
+    NSString *messageString = (message.length == 0)?[NSString stringWithFormat:@"%@：请求添加你为好友",username]:[NSString stringWithFormat:@"%@：请求添加你为好友，附加消息：%@",username,message];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"好友申请" message:messageString preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        EMError *error = nil;
+        BOOL isSuccess = [[EaseMob sharedInstance].chatManager rejectBuddyRequest:username reason:@"对方拒绝添加你为好友" error:&error];
+        if (isSuccess && !error) {
+            EMError *error = nil;
+            BOOL isSuccess = [[EaseMob sharedInstance].chatManager rejectBuddyRequest:username reason:@"对方拒绝添加你为好友" error:&error];
+            if (isSuccess && !error) {
+                [[TKAlertCenter defaultCenter] postAlertWithMessage:@"已拒绝"];
+            } else {
+                [[TKAlertCenter defaultCenter] postAlertWithMessage:@"拒绝时出现错误"];
+            }
+        }
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"接受" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        EMError *error = nil;
+        BOOL isSuccess = [[EaseMob sharedInstance].chatManager acceptBuddyRequest:username error:&error];
+        if (isSuccess && !error) {
+            EMError *error = nil;
+            BOOL isSuccess = [[EaseMob sharedInstance].chatManager acceptBuddyRequest:username error:&error];
+            if (isSuccess && !error) {
+                [[TKAlertCenter defaultCenter] postAlertWithMessage:@"添加成功"];
+            }else {
+                [[TKAlertCenter defaultCenter] postAlertWithMessage:@"添加失败"];
+            }
+        }
+    }]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

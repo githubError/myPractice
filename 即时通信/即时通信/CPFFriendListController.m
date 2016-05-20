@@ -6,22 +6,179 @@
 //  Copyright © 2016年 cuipengfei. All rights reserved.
 //
 
-#import "CPFFriendListController.h"
+/**
+ *  @author 崔鹏飞, 2016-05-20 20:46:59
+ 
+ #import "FriendListViewController.h"
+ #import "AddFriendViewController.h"
+ #import "ChatViewController.h"
+ #import <EaseMob.h>
+ @interface FriendListViewController ()<UITableViewDataSource,UITableViewDelegate,EMChatManagerDelegate,EMChatManagerBuddyDelegate>
+ @property(nonatomic, strong)NSMutableArray *listArray;
+ @property(nonatomic, strong)UITableView *tableView;
+ @end
+ 
+ @implementation FriendListViewController
+ 
+ -(void)viewWillAppear:(BOOL)animated
+ {
+ [super viewWillAppear:animated];
+ 
+ }
+ -(void)loadView
+ {
+ [super loadView];
+ self.view.backgroundColor = [UIColor whiteColor];
+ //左侧注销按钮
+ self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"注销" style:UIBarButtonItemStylePlain target:self action:@selector(didClickedCancelButton)];
+ self.title = @"好友";
+ 
+ [[EaseMob sharedInstance].chatManager asyncFetchBuddyListWithCompletion:^(NSArray *buddyList, EMError *error) {
+ 
+ if (!error) {
+ NSLog(@"获取成功 -- %@", buddyList);
+ 
+ [_listArray removeAllObjects];
+ [_listArray addObjectsFromArray:buddyList];
+ [_tableView reloadData];
+ }
+ } onQueue:dispatch_get_main_queue()];
+ 
+ }
+ 
+ - (void)viewDidLoad {
+ [super viewDidLoad];
+ _listArray = [NSMutableArray new];
+ self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addbuttonAction)];
+ _tableView = [[UITableView alloc]initWithFrame:self.view.frame];
+ _tableView.delegate = self;
+ _tableView.dataSource = self;
+ _tableView.tableFooterView = [[UIView alloc]init];
+ [self.view addSubview:_tableView];
+ //签协议
+ [ [EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:dispatch_get_main_queue()];
+ }
+ 
+ -(void)didClickedCancelButton
+ {
+ //注销用户
+ [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:YES];
+ [self.navigationController popViewControllerAnimated:YES];
+ }
+ 
+ -(void)addbuttonAction
+ {
+ [self.navigationController pushViewController:[[AddFriendViewController alloc]init] animated:YES];
+ }
+ 
+ # pragma mark - Table View Data Source
+ - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+ 
+ return _listArray.count;
+ }
+ 
+ -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ return 50;
+ }
+ 
+ - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+ static NSString *identifier = @"cell";
+ UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+ if (!cell) {
+ cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
+ }
+ 
+ EMBuddy * buddy = _listArray[indexPath.row];
+ 
+ cell.textLabel.text = buddy.username;
+ 
+ return cell;
+ }
+ 
+ - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+ ChatViewController * chatVC = [[ChatViewController alloc]init];
+ 
+ EMBuddy * buddy = _listArray[indexPath.row];
+ 
+ chatVC.name = buddy.username;
+ 
+ [self.navigationController pushViewController:chatVC animated:YES];
+ }
+ -(void)didReceiveBuddyRequest:(NSString *)username message:(NSString *)message
+ {
+ UIAlertController * alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"收到来自%@的请求", username] message:message preferredStyle:(UIAlertControllerStyleAlert)];
+ UIAlertAction * acceptAction = [UIAlertAction actionWithTitle:@"好" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *  action) {
+ EMError * error;
+ // 同意好友请求的方法
+ if ([[EaseMob sharedInstance].chatManager acceptBuddyRequest:username error:&error] && !error) {
+ NSLog(@"发送同意成功");
+ dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+ [[EaseMob sharedInstance].chatManager asyncFetchBuddyListWithCompletion:^(NSArray *buddyList, EMError *error) {
+ 
+ if (!error) {
+ NSLog(@"获取成功 -- %@", buddyList);
+ 
+ [_listArray removeAllObjects];
+ [_listArray addObjectsFromArray:buddyList];
+ [_tableView reloadData];
+ }
+ } onQueue:dispatch_get_main_queue()];
+ });
+ }
+ }];
+ UIAlertAction * rejectAction = [UIAlertAction actionWithTitle:@"滚" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+ EMError * error;
+ // 拒绝好友请求的方法
+ if ([[EaseMob sharedInstance].chatManager rejectBuddyRequest:username reason:@"滚, 快滚!" error:&error] && !error) {
+ NSLog(@"发送拒绝成功");
+ }
+ }];
+ [alertController addAction:acceptAction];
+ [alertController addAction:rejectAction];
+ [self showDetailViewController:alertController sender:nil];
+ }
+ 
+ - (void)didReceiveMemoryWarning {
+ [super didReceiveMemoryWarning];
+ // Dispose of any resources that can be recreated.
+ }
+ 
+ */
 
-@interface CPFFriendListController ()
+#import "CPFFriendListController.h"
+#import "EaseMob.h"
+#import "TKAlertCenter.h"
+
+@interface CPFFriendListController () <EMChatManagerDelegate>
+
+@property (nonatomic, strong) NSArray *friendList;
 
 @end
 
 @implementation CPFFriendListController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    _friendList = [NSMutableArray array];
+    [[EaseMob sharedInstance].chatManager asyncFetchBuddyListWithCompletion:^(NSArray *buddyList, EMError *error) {
+        if (!error) {
+            
+            
+            _friendList = buddyList;
+            NSLog(@"获取好友列表成功 -- %@",_friendList);
+        }else {
+            NSLog(@"获取好友列表失败 -- %@",buddyList);
+        }
+    } onQueue:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    _friendList = [NSArray array];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"reuseIdentifier"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,66 +190,38 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 0;
+    return _friendList.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
+    EMBuddy *buddy = _friendList[indexPath.row];
+    cell.textLabel.text = buddy.username;
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+
+#pragma mark - EMChatManagerBuddyDelegate
+
+- (void)didUpdateBuddyList:(NSArray *)buddyList changedBuddies:(NSArray *)changedBuddies isAdd:(BOOL)isAdd {
+    _friendList = buddyList;
+    [self.tableView reloadData];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (void)didFetchedBuddyList:(NSArray *)buddyList error:(EMError *)error {
+    if (!error) {
+        _friendList = buddyList;
+        NSLog(@"didFetchedBuddyList成功 ----%@",_friendList);
+        [self.tableView reloadData];
+    }else{
+        NSLog(@"didFetchedBuddyList失败 ----%@",_friendList);
+    }
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

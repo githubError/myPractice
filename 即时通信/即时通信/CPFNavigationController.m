@@ -83,7 +83,7 @@
             NSLog(@"发送同意成功");
         }
     }]];
-    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

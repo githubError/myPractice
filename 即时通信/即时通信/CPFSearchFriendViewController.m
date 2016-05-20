@@ -31,12 +31,14 @@
     _userInfoField = [[UITextField alloc] initWithFrame:CGRectMake(20, 40, 280, 30)];
     _userInfoField.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.8];
     _userInfoField.borderStyle = UITextBorderStyleRoundedRect;
+    _userInfoField.keyboardType = UIKeyboardTypeEmailAddress;
     _userInfoField.delegate = self;
     _userInfoField.placeholder = @"用户名/群组";
     
     _messageField = [[UITextField alloc] initWithFrame:CGRectMake(20, 80, 280, 60)];
     _messageField.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.8];
     _messageField.borderStyle = UITextBorderStyleRoundedRect;
+    _messageField.keyboardType = UIKeyboardTypeASCIICapable;
     _messageField.placeholder = @"附加信息";
     _messageField.delegate = self;
     
@@ -60,18 +62,22 @@
     BOOL isSuccess = [[EaseMob sharedInstance].chatManager addBuddy:_userInfoField.text message:_messageField.text error:nil];
     if (isSuccess) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        [[TKAlertCenter defaultCenter] postAlertWithMessage:@"添加成功"];
+        [[TKAlertCenter defaultCenter] postAlertWithMessage:@"发送成功"];
     }else{
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        [[TKAlertCenter defaultCenter] postAlertWithMessage:@"添加失败"];
+        [[TKAlertCenter defaultCenter] postAlertWithMessage:@"发送失败失败"];
         
     }
 }
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [_userInfoField resignFirstResponder];
+    [_messageField resignFirstResponder];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [_userInfoField resignFirstResponder];
-    
-    
+    [_messageField resignFirstResponder];
     return YES;
 }
 
