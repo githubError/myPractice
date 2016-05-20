@@ -37,6 +37,7 @@
         self.rowHeight = rowHeight;
         self.arrData = [dataArr copy];
         self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(origin.x + LeftToView, origin.y + TopToView, width, rowHeight * dataArr.count) style:UITableViewStylePlain];
+        
         _tableView.dataSource = self;
         _tableView.delegate = self;
         
@@ -51,7 +52,7 @@
             [self.tableView setSeparatorInset:CellLineEdgeInsets];
             
         }
-        
+    
         if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
             
             [self.tableView setLayoutMargins:CellLineEdgeInsets];
