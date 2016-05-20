@@ -8,8 +8,15 @@
 
 #import "CPFSearchFriendViewController.h"
 #import "UIViewExt.h"
+#import "EaseMob.h"
+#import "MBProgressHUD.h"
+#import "MBProgressHUD+Add.h"
+#import "TKAlertCenter.h"
+
 
 @interface CPFSearchFriendViewController () <UITextFieldDelegate>
+
+@property (nonatomic, assign) NSArray *userList;
 
 @end
 
@@ -17,26 +24,52 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _userList = [NSArray array];
+    
     self.view.backgroundColor = [UIColor whiteColor];
-    _searchInfoField = [[UITextField alloc] initWithFrame:CGRectMake(20, 40, 240, 30)];
-    _searchInfoField.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.8];
-    _searchButton = [CPFButton shareButton];
-    _searchInfoField.borderStyle = UITextBorderStyleRoundedRect;
-    _searchInfoField.delegate = self;
-    _searchInfoField.placeholder = @"用户名/群组";
-    _searchButton.frame = CGRectMake(_searchInfoField.right, 40, 30, 30);
-    [_searchButton setImage:[UIImage imageNamed:@"add_friend_searchicon"] forState:UIControlStateNormal];
-    _searchButton.clickBlock = ^(CPFButton *btn){
-        NSLog(@"_searchButtonClicked");
-    };
-    [self.view addSubview:_searchInfoField];
-    [self.view addSubview:_searchButton];
+    _userInfoField = [[UITextField alloc] initWithFrame:CGRectMake(20, 40, 280, 30)];
+    _userInfoField.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.8];
+    _userInfoField.borderStyle = UITextBorderStyleRoundedRect;
+    _userInfoField.delegate = self;
+    _userInfoField.placeholder = @"用户名/群组";
+    
+    _messageField = [[UITextField alloc] initWithFrame:CGRectMake(20, 80, 280, 60)];
+    _messageField.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.8];
+    _messageField.borderStyle = UITextBorderStyleRoundedRect;
+    _messageField.placeholder = @"附加信息";
+    _messageField.delegate = self;
+    
+    _commitButton = [CPFButton shareButton];
+    
+    _commitButton.frame = CGRectMake(_userInfoField.center.x - 40, 150, 80, 30);
+    _commitButton.backgroundColor = [UIColor redColor];
+    _commitButton.layer.cornerRadius = 8.0f;
+    [_commitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_commitButton setTitle:@"添加好友" forState:UIControlStateNormal];
+    [_commitButton addTarget:self action:@selector(addFriend) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_userInfoField];
+    [self.view addSubview:_messageField];
+    [self.view addSubview:_commitButton];
     
 }
 
 
+- (void)addFriend{
+    [MBProgressHUD showMessag:@"正在发送请求..." toView:self.view];
+    BOOL isSuccess = [[EaseMob sharedInstance].chatManager addBuddy:_userInfoField.text message:_messageField.text error:nil];
+    if (isSuccess) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [[TKAlertCenter defaultCenter] postAlertWithMessage:@"添加成功"];
+    }else{
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [[TKAlertCenter defaultCenter] postAlertWithMessage:@"添加失败"];
+        
+    }
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [_searchInfoField resignFirstResponder];
+    [_userInfoField resignFirstResponder];
     
     
     return YES;

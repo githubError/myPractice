@@ -61,6 +61,8 @@
 // 退出登录
 - (void)isLogoffSuccess {
     _loginViewController = [[CPFLoginViewController alloc] init];
+    self.window.rootViewController = _loginViewController;
+    [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:NO];
 }
 
 // App进入后台

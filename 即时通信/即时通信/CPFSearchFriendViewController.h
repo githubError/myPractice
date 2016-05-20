@@ -11,7 +11,8 @@
 
 @interface CPFSearchFriendViewController : UIViewController
 
-@property (nonatomic, strong) UITextField *searchInfoField;
-@property (nonatomic, strong) CPFButton *searchButton;
+@property (nonatomic, strong) UITextField *userInfoField;
+@property (nonatomic, strong) UITextField *messageField;
+@property (nonatomic, strong) CPFButton *commitButton;
 
 @end

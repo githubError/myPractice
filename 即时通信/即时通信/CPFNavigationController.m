@@ -64,5 +64,26 @@
     return UIStatusBarStyleLightContent;
 }
 
+- (void)didReceiveBuddyRequest:(NSString *)username message:(NSString *)message {
+    
+    NSString *messageString = (message.length == 0)?[NSString stringWithFormat:@"%@：请求添加你为好友",username]:[NSString stringWithFormat:@"%@：请求添加你为好友，附加消息：%@",username,message];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"好友申请" message:messageString preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        EMError *error = nil;
+        BOOL isSuccess = [[EaseMob sharedInstance].chatManager rejectBuddyRequest:@"8001" reason:@"111111" error:&error];
+        if (isSuccess && !error) {
+            NSLog(@"发送拒绝成功");
+        }
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"接受" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        EMError *error = nil;
+        BOOL isSuccess = [[EaseMob sharedInstance].chatManager acceptBuddyRequest:@"8001" error:&error];
+        if (isSuccess && !error) {
+            NSLog(@"发送同意成功");
+        }
+    }]];
+    
+}
 
 @end
