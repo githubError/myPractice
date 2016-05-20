@@ -165,8 +165,6 @@
     _friendList = [NSMutableArray array];
     [[EaseMob sharedInstance].chatManager asyncFetchBuddyListWithCompletion:^(NSArray *buddyList, EMError *error) {
         if (!error) {
-            
-            
             _friendList = buddyList;
             NSLog(@"获取好友列表成功 -- %@",_friendList);
         }else {
@@ -209,10 +207,6 @@
 
 #pragma mark - EMChatManagerBuddyDelegate
 
-- (void)didUpdateBuddyList:(NSArray *)buddyList changedBuddies:(NSArray *)changedBuddies isAdd:(BOOL)isAdd {
-    _friendList = buddyList;
-    [self.tableView reloadData];
-}
 
 - (void)didFetchedBuddyList:(NSArray *)buddyList error:(EMError *)error {
     if (!error) {

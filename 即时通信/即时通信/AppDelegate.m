@@ -47,7 +47,8 @@
         
         [self isLoginSuccess];
     }
-    
+    // 自动获取好友列表
+    [[EaseMob sharedInstance].chatManager setIsAutoFetchBuddyList:YES];
     
     return YES;
 }
