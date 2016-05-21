@@ -18,14 +18,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // 导航栏标题
+    self.title = _buddy.username;
+    
     // 初始化添加内容的view
     CPFContentView *contentView = [[CPFContentView alloc]init];
     contentView.backgroundColor = [UIColor whiteColor];
     contentView.showsHorizontalScrollIndicator = NO;
     contentView.showsVerticalScrollIndicator = NO;
-    contentView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    contentView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     [self.view addSubview:contentView];
     self.contentView = contentView;
+    
+    // 初始化tableView
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    
+    [self.contentView addSubview:_tableView];
     
     
 }

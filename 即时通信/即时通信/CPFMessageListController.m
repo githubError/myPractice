@@ -63,6 +63,9 @@
     NSLog(@"select: %d", indexPath.row);
     if (indexPath.row == 0) {
         CPFSearchFriendViewController *searchViewController = [[CPFSearchFriendViewController alloc] init];
+        
+        [searchViewController setHidesBottomBarWhenPushed:YES];
+        
         [self.navigationController pushViewController:searchViewController animated:YES];
     }
 }

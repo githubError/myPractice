@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CPFContentView.h"
+#import "EaseMob.h"
 
-@interface CPFDialogViewController : UIViewController
+@interface CPFDialogViewController : UIViewController <EMChatManagerDelegate>
 
 @property (nonatomic, strong) CPFContentView *contentView;
+
+@property (nonatomic, strong) EMBuddy *buddy;
 
 @end
