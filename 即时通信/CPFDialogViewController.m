@@ -8,7 +8,9 @@
 
 #import "CPFDialogViewController.h"
 
-@interface CPFDialogViewController ()
+@interface CPFDialogViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -16,22 +18,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // 初始化添加内容的view
+    CPFContentView *contentView = [[CPFContentView alloc]init];
+    contentView.backgroundColor = [UIColor whiteColor];
+    contentView.showsHorizontalScrollIndicator = NO;
+    contentView.showsVerticalScrollIndicator = NO;
+    contentView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    [self.view addSubview:contentView];
+    self.contentView = contentView;
+    
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"chatCell";
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    return cell;
 }
-*/
+
 
 @end
