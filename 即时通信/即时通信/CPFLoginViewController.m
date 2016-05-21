@@ -109,9 +109,10 @@
         [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:self.userNameField.text password:self.passwordField.text completion:^(NSDictionary *loginInfo, EMError *error) {
             if (!error) {
                 AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-                [appDelegate isLoginSuccess];
+                
                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 
+                [appDelegate isLoginSuccess];
                 // 允许自动登录
                 [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
                 

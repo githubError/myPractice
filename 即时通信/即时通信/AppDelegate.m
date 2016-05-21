@@ -12,9 +12,10 @@
 #import "CPFTabBarController.h"
 #import "CPFLoginViewController.h"
 #import "MBProgressHUD+Add.h"
+#import "TKAlertCenter.h"
 
 
-@interface AppDelegate ()
+@interface AppDelegate () <EMChatManagerDelegate>
 
 @property (nonatomic, strong) CPFTabBarController *tabBarController;
 
@@ -41,11 +42,13 @@
     
     [[EaseMob sharedInstance] registerSDKWithAppKey:@"cuipengfei#myim" apnsCertName:nil otherConfig:@{kSDKConfigEnableConsoleLogger: @0}];
     
+    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
     
+    [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     // 添加自动登录
     if ([[EaseMob sharedInstance].chatManager isAutoLoginEnabled]) {
         
-        [self isLoginSuccess];
+        [MBProgressHUD showMessag:@"正在登陆..." toView:self.window];
     }
     // 自动获取好友列表
     [[EaseMob sharedInstance].chatManager setIsAutoFetchBuddyList:YES];
@@ -64,6 +67,19 @@
     _loginViewController = [[CPFLoginViewController alloc] init];
     self.window.rootViewController = _loginViewController;
     [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:NO];
+}
+
+// 自动登陆完成的回调方法
+- (void)didAutoLoginWithInfo:(NSDictionary *)loginInfo error:(EMError *)error
+{
+    NSLog(@"loginInfo = %@",loginInfo);
+    [MBProgressHUD hideAllHUDsForView:self.window animated:YES];
+    if (error) {
+        [[TKAlertCenter defaultCenter]postAlertWithMessage:@"登陆失败"];
+    }else{
+        [[TKAlertCenter defaultCenter]postAlertWithMessage:@"登陆成功"];
+        [self isLoginSuccess];
+    }
 }
 
 // App进入后台
