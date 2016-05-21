@@ -33,12 +33,16 @@
 		D1A1D8E31CEA244700927C86 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A1D8E21CEA244700927C86 /* libxml2.tbd */; };
 		D1A1D8E91CEA2D0700927C86 /* CPFNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8E81CEA2D0700927C86 /* CPFNavigationController.m */; };
 		D1A1D8EC1CEA398800927C86 /* CPFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8EB1CEA398800927C86 /* CPFTabBarController.m */; };
-		D1A1D8EF1CEA3D0C00927C86 /* CPFContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8EE1CEA3D0C00927C86 /* CPFContentView.m */; };
 		D1A1D8F21CEA3F0400927C86 /* CPFMessageListController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8F11CEA3F0400927C86 /* CPFMessageListController.m */; };
 		D1A1D8F51CEA4BBD00927C86 /* CPFFriendListController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8F41CEA4BBD00927C86 /* CPFFriendListController.m */; };
 		D1A1D8F81CEA4BEB00927C86 /* CPFMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8F71CEA4BEB00927C86 /* CPFMeViewController.m */; };
 		D1A1D8FB1CEA50A400927C86 /* CPFMessageListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8FA1CEA50A400927C86 /* CPFMessageListViewCell.m */; };
 		D1A1D8FD1CEA5A8100927C86 /* CPFMessageListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1A1D8FC1CEA5A8100927C86 /* CPFMessageListViewCell.xib */; };
+		D1BEE7991CF0790C007A3479 /* CPFContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BEE7981CF0790C007A3479 /* CPFContentView.m */; };
+		D1BEE79D1CF07986007A3479 /* CPFDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BEE79C1CF07986007A3479 /* CPFDialogViewController.m */; };
+		D1BEE7A01CF07A01007A3479 /* CPFToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BEE79F1CF07A01007A3479 /* CPFToolView.m */; };
+		D1BEE7A31CF07A49007A3479 /* CPFMoreSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BEE7A21CF07A49007A3479 /* CPFMoreSelectView.m */; };
+		D1BEE7A61CF07A81007A3479 /* CPFMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BEE7A51CF07A81007A3479 /* CPFMessageCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,8 +168,6 @@
 		D1A1D8E81CEA2D0700927C86 /* CPFNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFNavigationController.m; sourceTree = "<group>"; };
 		D1A1D8EA1CEA398800927C86 /* CPFTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFTabBarController.h; sourceTree = "<group>"; };
 		D1A1D8EB1CEA398800927C86 /* CPFTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFTabBarController.m; sourceTree = "<group>"; };
-		D1A1D8ED1CEA3D0C00927C86 /* CPFContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFContentView.h; sourceTree = "<group>"; };
-		D1A1D8EE1CEA3D0C00927C86 /* CPFContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFContentView.m; sourceTree = "<group>"; };
 		D1A1D8F01CEA3F0400927C86 /* CPFMessageListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFMessageListController.h; sourceTree = "<group>"; };
 		D1A1D8F11CEA3F0400927C86 /* CPFMessageListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFMessageListController.m; sourceTree = "<group>"; };
 		D1A1D8F31CEA4BBD00927C86 /* CPFFriendListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFFriendListController.h; sourceTree = "<group>"; };
@@ -175,6 +177,16 @@
 		D1A1D8F91CEA50A400927C86 /* CPFMessageListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFMessageListViewCell.h; sourceTree = "<group>"; };
 		D1A1D8FA1CEA50A400927C86 /* CPFMessageListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFMessageListViewCell.m; sourceTree = "<group>"; };
 		D1A1D8FC1CEA5A8100927C86 /* CPFMessageListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPFMessageListViewCell.xib; sourceTree = "<group>"; };
+		D1BEE7971CF0790C007A3479 /* CPFContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFContentView.h; sourceTree = "<group>"; };
+		D1BEE7981CF0790C007A3479 /* CPFContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFContentView.m; sourceTree = "<group>"; };
+		D1BEE79B1CF07986007A3479 /* CPFDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFDialogViewController.h; sourceTree = "<group>"; };
+		D1BEE79C1CF07986007A3479 /* CPFDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFDialogViewController.m; sourceTree = "<group>"; };
+		D1BEE79E1CF07A01007A3479 /* CPFToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFToolView.h; sourceTree = "<group>"; };
+		D1BEE79F1CF07A01007A3479 /* CPFToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFToolView.m; sourceTree = "<group>"; };
+		D1BEE7A11CF07A49007A3479 /* CPFMoreSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFMoreSelectView.h; sourceTree = "<group>"; };
+		D1BEE7A21CF07A49007A3479 /* CPFMoreSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFMoreSelectView.m; sourceTree = "<group>"; };
+		D1BEE7A41CF07A81007A3479 /* CPFMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFMessageCell.h; sourceTree = "<group>"; };
+		D1BEE7A51CF07A81007A3479 /* CPFMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFMessageCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,10 +247,11 @@
 				D1A1D8EB1CEA398800927C86 /* CPFTabBarController.m */,
 				D1A1D8E71CEA2D0700927C86 /* CPFNavigationController.h */,
 				D1A1D8E81CEA2D0700927C86 /* CPFNavigationController.m */,
-				D1A1D8ED1CEA3D0C00927C86 /* CPFContentView.h */,
-				D1A1D8EE1CEA3D0C00927C86 /* CPFContentView.m */,
+				D1BEE7971CF0790C007A3479 /* CPFContentView.h */,
+				D1BEE7981CF0790C007A3479 /* CPFContentView.m */,
 				D15515C51CEB5E44009B33BF /* Login */,
 				D15515C21CEB5CF4009B33BF /* MessageList */,
+				D1BEE79A1CF07961007A3479 /* Dialog */,
 				D15515C31CEB5D5D009B33BF /* FriendsList */,
 				D15515C41CEB5D70009B33BF /* Me */,
 				D15515C91CEB6F3C009B33BF /* other */,
@@ -608,6 +621,22 @@
 			name = frameworks;
 			sourceTree = "<group>";
 		};
+		D1BEE79A1CF07961007A3479 /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				D1BEE79B1CF07986007A3479 /* CPFDialogViewController.h */,
+				D1BEE79C1CF07986007A3479 /* CPFDialogViewController.m */,
+				D1BEE79E1CF07A01007A3479 /* CPFToolView.h */,
+				D1BEE79F1CF07A01007A3479 /* CPFToolView.m */,
+				D1BEE7A11CF07A49007A3479 /* CPFMoreSelectView.h */,
+				D1BEE7A21CF07A49007A3479 /* CPFMoreSelectView.m */,
+				D1BEE7A41CF07A81007A3479 /* CPFMessageCell.h */,
+				D1BEE7A51CF07A81007A3479 /* CPFMessageCell.m */,
+			);
+			name = Dialog;
+			path = ..;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -683,12 +712,15 @@
 			files = (
 				D1A1D8F51CEA4BBD00927C86 /* CPFFriendListController.m in Sources */,
 				D1A1D8FB1CEA50A400927C86 /* CPFMessageListViewCell.m in Sources */,
+				D1BEE7991CF0790C007A3479 /* CPFContentView.m in Sources */,
+				D1BEE7A61CF07A81007A3479 /* CPFMessageCell.m in Sources */,
 				D1A1D8E91CEA2D0700927C86 /* CPFNavigationController.m in Sources */,
-				D1A1D8EF1CEA3D0C00927C86 /* CPFContentView.m in Sources */,
 				D1A1D8F21CEA3F0400927C86 /* CPFMessageListController.m in Sources */,
 				D154D3101CEA1843004A4ABB /* AppDelegate.m in Sources */,
 				D155179D1CEBBF07009B33BF /* FixFopen.c in Sources */,
+				D1BEE7A01CF07A01007A3479 /* CPFToolView.m in Sources */,
 				D1A1D8F81CEA4BEB00927C86 /* CPFMeViewController.m in Sources */,
+				D1BEE79D1CF07986007A3479 /* CPFDialogViewController.m in Sources */,
 				D15517931CEBBE10009B33BF /* MBProgressHUD+Add.m in Sources */,
 				D124D4B51CECBE79005BDB21 /* CPFPopoverView.m in Sources */,
 				D15515CC1CEB6F5D009B33BF /* CPFButton.m in Sources */,
@@ -698,6 +730,7 @@
 				D154D30D1CEA1843004A4ABB /* main.m in Sources */,
 				D1A1D8EC1CEA398800927C86 /* CPFTabBarController.m in Sources */,
 				D15517941CEBBE10009B33BF /* MBProgressHUD.m in Sources */,
+				D1BEE7A31CF07A49007A3479 /* CPFMoreSelectView.m in Sources */,
 				D1043C691CEE53FF00BFA8FD /* CPFSearchFriendViewController.m in Sources */,
 				D155179B1CEBBE1A009B33BF /* UIView+TKCategory.m in Sources */,
 			);

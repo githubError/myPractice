@@ -1,5 +1,5 @@
 //
-//  CPFContentView.h
+//  CPFMessageCell.h
 //  即时通信
 //
 //  Created by cuipengfei on 16/5/21.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CPFContentView : UIScrollView
+@interface CPFMessageCell : UITableViewCell
 
 @end

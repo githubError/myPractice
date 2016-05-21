@@ -166,9 +166,8 @@
     [[EaseMob sharedInstance].chatManager asyncFetchBuddyListWithCompletion:^(NSArray *buddyList, EMError *error) {
         if (!error) {
             _friendList = buddyList;
-            NSLog(@"获取好友列表成功 -- %@",_friendList);
         }else {
-            NSLog(@"获取好友列表失败 -- %@",buddyList);
+            [[TKAlertCenter defaultCenter] postAlertWithMessage:@"获取好友列表失败"];
         }
     } onQueue:nil];
 }
@@ -207,6 +206,10 @@
 
 #pragma mark - EMChatManagerBuddyDelegate
 
+- (void)didUpdateBuddyList:(NSArray *)buddyList changedBuddies:(NSArray *)changedBuddies isAdd:(BOOL)isAdd {
+    _friendList = buddyList;
+    [self.tableView reloadData];
+}
 
 - (void)didFetchedBuddyList:(NSArray *)buddyList error:(EMError *)error {
     if (!error) {
