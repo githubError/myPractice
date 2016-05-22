@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EaseMob.h"
+
+@protocol CPFCellShowImageWithMessageDelegate <NSObject>
+
+- (void)cellShowImageWithMessage:(EMMessage *)message;
+
+@end
 
 @interface CPFMessageCell : UITableViewCell
+
+@property (nonatomic, strong) EMMessage *message;
+@property (nonatomic, assign) CGFloat rowHeight;
+@property (nonatomic, assign) id<CPFCellShowImageWithMessageDelegate>delegate;
 
 @end

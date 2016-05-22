@@ -64,26 +64,40 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (void)didReceiveBuddyRequest:(NSString *)username message:(NSString *)message {
+/**
+ * 可以在这个方法中拦截所有push进来的控制器
+ */
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (self.childViewControllers.count > 0) { // 如果push进来的不是第一个控制器
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitle:@"返回" forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
+        button.frame = CGRectMake(0, 0, 70, 30);
+        // 让按钮内部的所有内容左对齐
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        //        [button sizeToFit];
+        // 让按钮的内容往左边偏移10
+        button.contentEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+        [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+        
+        // 修改导航栏左边的item
+        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+        
+        // 隐藏tabbar
+        viewController.hidesBottomBarWhenPushed = YES;
+    }
     
-    NSString *messageString = (message.length == 0)?[NSString stringWithFormat:@"%@：请求添加你为好友",username]:[NSString stringWithFormat:@"%@：请求添加你为好友，附加消息：%@",username,message];
+    // 这句super的push要放在后面, 让viewController可以覆盖上面设置的leftBarButtonItem
+    [super pushViewController:viewController animated:animated];
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"好友申请" message:messageString preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        EMError *error = nil;
-        BOOL isSuccess = [[EaseMob sharedInstance].chatManager rejectBuddyRequest:@"8001" reason:@"111111" error:&error];
-        if (isSuccess && !error) {
-            NSLog(@"发送拒绝成功");
-        }
-    }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"接受" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        EMError *error = nil;
-        BOOL isSuccess = [[EaseMob sharedInstance].chatManager acceptBuddyRequest:@"8001" error:&error];
-        if (isSuccess && !error) {
-            NSLog(@"发送同意成功");
-        }
-    }]];
-    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)back {
+    [self popToRootViewControllerAnimated:YES];
 }
 
 @end
