@@ -32,7 +32,6 @@
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _iconBtn = [CPFButton shareButton];
-        [_iconBtn setImage:[UIImage imageNamed:@"chatListCellHead"] forState:UIControlStateNormal];
         [self addSubview:_iconBtn];
         
         _messageBtn = [CPFButton shareButton];
@@ -101,12 +100,14 @@
         
         _messageBtn.left = kScreenWidth - 44 - _messageBtn.size.width - kCellPadding;
         _iconBtn.frame = CGRectMake(_messageBtn.right + kCellPadding/2, _messageBtn.top, kWeChatAllSubviewHeight, kWeChatAllSubviewHeight);
+        [_iconBtn setImage:[UIImage imageNamed:@"default_header"] forState:UIControlStateNormal];
         
     }else{
         [_messageBtn setBackgroundImage:[UIImage resizingImageWithName:@"ReceiverTextNodeBkg"] forState:UIControlStateNormal];
         [_messageBtn setBackgroundImage:[UIImage resizingImageWithName:@"ReceiverTextNodeBkgHL"] forState:UIControlStateHighlighted];
         
         _iconBtn.frame = CGRectMake(kCellPadding/2, _messageBtn.top, kWeChatAllSubviewHeight, kWeChatAllSubviewHeight);
+        [_iconBtn setImage:[UIImage imageNamed:@"chatListCellHead"] forState:UIControlStateNormal];
         
         _messageBtn.left = _iconBtn.right + kCellPadding/2;
         
