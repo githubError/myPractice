@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CPFButton.h"
 
 typedef enum {
     CPFToolViewRecordStart,
@@ -28,9 +29,9 @@ typedef void(^CPFToolViewTextFieldBeginEditBlock)(UITextView *);
 
 @interface CPFToolView : UIView <UITextViewDelegate>
 
-@property (nonatomic, strong) UIButton *recordBtn;
+@property (nonatomic, strong) CPFButton *recordBtn;
 @property (nonatomic, strong) UITextView *inputView;
-@property (nonatomic, strong) UIButton *moreSelectBtn;
+@property (nonatomic, strong) CPFButton *moreSelectBtn;
 @property (nonatomic, strong) UIButton *sendTalkBtn;
 
 @property (nonatomic,assign)id<CPFToolViewRecordDelegate> delegate;

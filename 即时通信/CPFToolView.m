@@ -26,8 +26,9 @@
         
         self.backgroundColor = [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1.0];
         // 初始化控件
-        _recordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _recordBtn = [CPFButton shareButton];
         _recordBtn.frame = CGRectMake(0, 0, 40, 40);
+        _recordBtn.contentMode = UIViewContentModeScaleAspectFill;
         [_recordBtn setBackgroundImage:[UIImage imageNamed:@"ToolViewInputVoice"] forState:UIControlStateNormal];
         [_recordBtn setBackgroundImage:[UIImage imageNamed:@"ToolViewInputVoiceHL"] forState:UIControlStateHighlighted];
         [_recordBtn addTarget:self action:@selector(showRecordBtn) forControlEvents:UIControlEventTouchUpInside];
@@ -42,19 +43,25 @@
         _inputView.returnKeyType = UIReturnKeySend;
         [self addSubview:_inputView];
         
-        _moreSelectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _moreSelectBtn = [CPFButton shareButton];
         _moreSelectBtn.frame = CGRectMake(_inputView.right, 0, 40, 40);
+        _moreSelectBtn.contentMode = UIViewContentModeScaleAspectFill;
         [_moreSelectBtn setBackgroundImage:[UIImage imageNamed:@"TypeSelectorBtn_Black"] forState:UIControlStateNormal];
         [_moreSelectBtn setBackgroundImage:[UIImage imageNamed:@"TypeSelectorBtnHL_Black"] forState:UIControlStateHighlighted];
         [self addSubview:_moreSelectBtn];
+        // _moreSelectBtn点击事件
+        __weak CPFToolView *weakSelf = self;
+        _moreSelectBtn.clickBlock = ^(CPFButton *btn){
+            if (weakSelf.moreBtnBlock) {
+                weakSelf.moreBtnBlock();
+            }
+        };
         
         _sendTalkBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _sendTalkBtn.frame = CGRectMake(_recordBtn.right, 5, 240, 30);
         [_sendTalkBtn setTitle:@"按住 说话" forState:UIControlStateNormal];
-        
         _sendTalkBtn.backgroundColor = [UIColor whiteColor];
         _sendTalkBtn.layer.cornerRadius = 6.0;
-        
         [_sendTalkBtn setTitle:@"松手 发送" forState:UIControlStateHighlighted];
         [_sendTalkBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_sendTalkBtn setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
@@ -112,7 +119,26 @@
     _inputView.height = textView.contentSize.height;
     self.height = _inputView.height;
     if ([textView.text hasSuffix:@"\n"]) {
+        if (_textFieldSendBlock) {
+            _textFieldSendBlock(textView);
+        }
         [textView resignFirstResponder];
     }
 }
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if ([text isEqualToString:@"\n"]) {
+        _inputView.text = @"";
+        return NO;
+    }
+    return YES;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if (_beginEditBlock) {
+        _beginEditBlock(textView);
+    }
+}
+
 @end
