@@ -9,9 +9,6 @@
 #import "CPFMessageCell.h"
 #import "CPFButton.h"
 #import "UIViewExt.h"
-#import "EMCDDeviceManager.h"
-#import "UIButton+WebCache.h"
-#import "NSDateUtilities.h"
 #import "UIImage+XMGResizing.h"
 
 #define kCellPadding 10
@@ -86,8 +83,11 @@
         }else{
             url = [NSURL URLWithString:imgBody.thumbnailRemotePath];
         }
-        [_messageBtn sd_setImageWithURL:url forState:UIControlStateNormal];
-        [_messageBtn addTarget:self action:@selector(showImage) forControlEvents:UIControlEventTouchUpInside];
+        /**
+         *  @author 崔鹏飞, 2016-05-22 23:51:04
+         *
+         *  预览图片
+         */
     }
     
     _messageBtn.top = 30;
@@ -130,9 +130,12 @@
             voicePath = voiceBody.remotePath;
         }
         // 播放
-        [[EMCDDeviceManager sharedInstance] asyncPlayingWithPath:voicePath completion:^(NSError *error) {
-            NSLog(@"播放完成");
-        }];
+        /**
+         *  @author 崔鹏飞, 2016-05-22 23:51:47
+         *
+         *  播放语音
+         *
+         */
     }
 }
 
