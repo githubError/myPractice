@@ -35,6 +35,7 @@ typedef void(^CPFToolViewTextFieldBeginEditBlock)(UITextView *);
 @property (nonatomic, strong) UIButton *sendTalkBtn;
 
 @property (nonatomic,assign)id<CPFToolViewRecordDelegate> delegate;
+
 @property (nonatomic, copy)CPFToolViewTextFieldSendBlock textFieldSendBlock;
 
 @property (nonatomic, copy)CPFToolViewTextFieldBeginEditBlock beginEditBlock;

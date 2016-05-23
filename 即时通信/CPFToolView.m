@@ -128,6 +128,10 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     if ([text isEqualToString:@"\n"]) {
+        
+        if (_textFieldSendBlock) {
+            _textFieldSendBlock(textView);
+        }
         _inputView.text = @"";
         return NO;
     }

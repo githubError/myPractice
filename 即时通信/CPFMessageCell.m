@@ -67,7 +67,12 @@
         EMVoiceMessageBody *voiceBody = messageBody;
         _messageBtn.size = CGSizeMake(kWeChatAllSubviewHeight + 20, kWeChatAllSubviewHeight + 20);
         [_messageBtn setTitle:[NSString stringWithFormat:@"  %zd",voiceBody.duration] forState:UIControlStateNormal];
-        [_messageBtn setImage:[UIImage imageNamed:@"chat_receiver_audio_playing_full"] forState:UIControlStateNormal];
+        if ([message.from isEqualToString:[[EaseMob sharedInstance].chatManager loginInfo][@"username"]]) {
+            [_messageBtn setImage:[UIImage imageNamed:@"chat_sender_audio_playing_full"] forState:UIControlStateNormal];
+        }else{
+            [_messageBtn setImage:[UIImage imageNamed:@"chat_receiver_audio_playing_full"] forState:UIControlStateNormal];
+        }
+        
         [_messageBtn addTarget:self action:@selector(playAudio) forControlEvents:UIControlEventTouchUpInside];
         
     }else if ([messageBody isKindOfClass:[EMImageMessageBody class]]){
