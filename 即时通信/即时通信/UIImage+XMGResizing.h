@@ -1,9 +1,9 @@
 //
 //  UIImage+XMGResizing.h
-//  01.WeChat(EaseMobSDK导入)
+//  即时通信
 //
-//  Created by 肖剑 on 15/12/14.
-//  Copyright © 2015年 肖剑. All rights reserved.
+//  Created by cuipengfei on 16/5/16.
+//  Copyright © 2016年 cuipengfei. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
