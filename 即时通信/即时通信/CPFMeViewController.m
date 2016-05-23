@@ -50,7 +50,10 @@
         cell.textLabel.text = @"退出登录";
         [cell.textLabel setTextColor:[UIColor redColor]];
     }
-    
+    if (indexPath.row == 0) {
+        cell.textLabel.text = [[EaseMob sharedInstance].chatManager loginInfo][@"username"];
+        cell.imageView.image = [UIImage imageNamed:@"default_header"];
+    }
     
     return cell;
 }
@@ -70,6 +73,13 @@
             }
         } onQueue:nil];
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        return 80;
+    }
+    return 50;
 }
 
 @end
