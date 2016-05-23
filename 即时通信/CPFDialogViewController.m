@@ -57,7 +57,7 @@
     // 初始化toolView
     _toolView = [[CPFToolView alloc] initWithFrame:CGRectMake(0, _tableView.bottom, kScreenWidth, 40)];
     
-    
+    _toolView.delegate = self;
     
     // 确定会话类型
     EMConversationType conversationType = eConversationTypeChat;

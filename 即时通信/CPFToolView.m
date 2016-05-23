@@ -57,7 +57,7 @@
             }
         };
         
-        _sendTalkBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _sendTalkBtn = [CPFButton shareButton];
         _sendTalkBtn.frame = CGRectMake(_recordBtn.right, 5, 240, 30);
         [_sendTalkBtn setTitle:@"按住 说话" forState:UIControlStateNormal];
         _sendTalkBtn.backgroundColor = [UIColor whiteColor];
@@ -87,7 +87,7 @@
 }
 
 // 开始录音
-- (void)start:(UIButton *)btn
+- (void)start:(CPFButton *)btn
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(toolViewRecord:withType:)]) {
         [self.delegate toolViewRecord:btn withType:CPFToolViewRecordStart];
@@ -96,7 +96,7 @@
 }
 
 // 结束录音
-- (void)stop:(UIButton *)btn
+- (void)stop:(CPFButton *)btn
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(toolViewRecord:withType:)]) {
         [self.delegate toolViewRecord:btn withType:CPFToolViewRecordStop];
@@ -104,7 +104,7 @@
 }
 
 // 退出录音
-- (void)cancel:(UIButton *)btn
+- (void)cancel:(CPFButton *)btn
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(toolViewRecord:withType:)]) {
         [self.delegate toolViewRecord:btn withType:CPFToolViewRecordCancel];

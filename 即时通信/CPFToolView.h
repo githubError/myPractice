@@ -23,7 +23,7 @@ typedef void(^CPFToolViewTextFieldBeginEditBlock)(UITextView *);
 
 @protocol CPFToolViewRecordDelegate <NSObject>
 
-- (void)toolViewRecord:(UIButton *)recordBtn withType:(CPFToolViewRecordType)type;
+- (void)toolViewRecord:(CPFButton *)recordBtn withType:(CPFToolViewRecordType)type;
 
 @end
 
@@ -32,7 +32,7 @@ typedef void(^CPFToolViewTextFieldBeginEditBlock)(UITextView *);
 @property (nonatomic, strong) CPFButton *recordBtn;
 @property (nonatomic, strong) UITextView *inputView;
 @property (nonatomic, strong) CPFButton *moreSelectBtn;
-@property (nonatomic, strong) UIButton *sendTalkBtn;
+@property (nonatomic, strong) CPFButton *sendTalkBtn;
 
 @property (nonatomic,assign)id<CPFToolViewRecordDelegate> delegate;
 
