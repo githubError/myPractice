@@ -37,9 +37,7 @@
     
     // 导航栏标题
     self.title = _buddy.username;
-    __block CPFDialogViewController *dialogViewCtr = self;
-    __block NSMutableArray *arr = _allMessages;
-    __block UITableView *tableView = _tableView;
+    
     // 初始化添加内容的view
     CPFContentView *contentView = [[CPFContentView alloc]init];
     contentView.backgroundColor = [UIColor whiteColor];
@@ -59,10 +57,7 @@
     // 初始化toolView
     _toolView = [[CPFToolView alloc] initWithFrame:CGRectMake(0, _tableView.bottom, kScreenWidth, 40)];
     
-    _toolView.beginEditBlock = ^(UITextView *textView) {
-        [dialogViewCtr hideMoreSelectView];
-        dialogViewCtr.textView = textView;
-    };
+    
     
     // 确定会话类型
     EMConversationType conversationType = eConversationTypeChat;
@@ -76,11 +71,17 @@
     _allMessages = [NSMutableArray arrayWithArray:messages];
     NSLog(@"----------allMessages%@",_allMessages);
     
+    __block CPFDialogViewController *dialogViewCtr = self;
+    __block NSMutableArray *arr = _allMessages;
+    __block UITableView *tableView = _tableView;
     
-    
+    _toolView.beginEditBlock = ^(UITextView *textView) {
+        [dialogViewCtr hideMoreSelectView];
+        dialogViewCtr.textView = textView;
+    };
     _toolView.textFieldSendBlock = ^(UITextView *textView){
         // 创建一个文本消息实例
-        EMChatText *chatText = [[EMChatText alloc]initWithText:[textView.text substringToIndex:textView.text.length - 1]];
+        EMChatText *chatText = [[EMChatText alloc]initWithText:[textView.text substringToIndex:textView.text.length]];
         
         // 创建一个消息体
         EMTextMessageBody *body = [[EMTextMessageBody alloc]initWithChatObject:chatText];
