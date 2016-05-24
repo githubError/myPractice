@@ -91,6 +91,7 @@
 		D1A1D8F81CEA4BEB00927C86 /* CPFMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8F71CEA4BEB00927C86 /* CPFMeViewController.m */; };
 		D1A1D8FB1CEA50A400927C86 /* CPFMessageListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A1D8FA1CEA50A400927C86 /* CPFMessageListViewCell.m */; };
 		D1A1D8FD1CEA5A8100927C86 /* CPFMessageListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1A1D8FC1CEA5A8100927C86 /* CPFMessageListViewCell.xib */; };
+		D1B09F151CF46710006CE917 /* CPFFriendList.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B09F141CF46710006CE917 /* CPFFriendList.m */; };
 		D1BEE7991CF0790C007A3479 /* CPFContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BEE7981CF0790C007A3479 /* CPFContentView.m */; };
 		D1BEE79D1CF07986007A3479 /* CPFDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BEE79C1CF07986007A3479 /* CPFDialogViewController.m */; };
 		D1BEE7A01CF07A01007A3479 /* CPFToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BEE79F1CF07A01007A3479 /* CPFToolView.m */; };
@@ -348,6 +349,8 @@
 		D1A1D8F91CEA50A400927C86 /* CPFMessageListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFMessageListViewCell.h; sourceTree = "<group>"; };
 		D1A1D8FA1CEA50A400927C86 /* CPFMessageListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFMessageListViewCell.m; sourceTree = "<group>"; };
 		D1A1D8FC1CEA5A8100927C86 /* CPFMessageListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPFMessageListViewCell.xib; sourceTree = "<group>"; };
+		D1B09F131CF46710006CE917 /* CPFFriendList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFFriendList.h; sourceTree = "<group>"; };
+		D1B09F141CF46710006CE917 /* CPFFriendList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFFriendList.m; sourceTree = "<group>"; };
 		D1BEE7971CF0790C007A3479 /* CPFContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFContentView.h; sourceTree = "<group>"; };
 		D1BEE7981CF0790C007A3479 /* CPFContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFContentView.m; sourceTree = "<group>"; };
 		D1BEE79B1CF07986007A3479 /* CPFDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFDialogViewController.h; sourceTree = "<group>"; };
@@ -681,6 +684,8 @@
 			children = (
 				D1A1D8F31CEA4BBD00927C86 /* CPFFriendListController.h */,
 				D1A1D8F41CEA4BBD00927C86 /* CPFFriendListController.m */,
+				D1B09F131CF46710006CE917 /* CPFFriendList.h */,
+				D1B09F141CF46710006CE917 /* CPFFriendList.m */,
 			);
 			name = FriendsList;
 			sourceTree = "<group>";
@@ -1113,6 +1118,7 @@
 				D1A1D8F51CEA4BBD00927C86 /* CPFFriendListController.m in Sources */,
 				D1A1D8FB1CEA50A400927C86 /* CPFMessageListViewCell.m in Sources */,
 				D13C4F371CF3577A00243D78 /* UIImage+EMGIF.m in Sources */,
+				D1B09F151CF46710006CE917 /* CPFFriendList.m in Sources */,
 				D13C4F341CF3577A00243D78 /* MKAnnotationView+EMWebCache.m in Sources */,
 				D13C4F461CF3577A00243D78 /* PSTGridLayoutInfo.m in Sources */,
 				D13C4F291CF3577A00243D78 /* MWTapDetectingImageView.m in Sources */,

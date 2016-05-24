@@ -10,4 +10,6 @@
 
 @interface CPFFriendListController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) NSArray *friendList;
+
 @end

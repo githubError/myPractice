@@ -12,10 +12,14 @@
 #import "CPFSearchFriendViewController.h"
 #import "EaseMob.h"
 #import "TKAlertCenter.h"
+#import "CPFFriendListController.h"
+#import "CPFFriendList.h"
+#import "CPFDialogViewController.h"
 
-@interface CPFMessageListController () <CPFCustomMenuDelegate,EMChatManagerDelegate>
+@interface CPFMessageListController () <CPFCustomMenuDelegate, EMChatManagerDelegate, EMChatManagerChatDelegate, EMChatManagerDelegate>
 
 @property (nonatomic, strong) CPFPopoverView *menu;
+@property (nonatomic, strong) NSMutableArray *messageSource;
 
 @end
 
@@ -40,6 +44,49 @@
     [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
     
 }
+
+
+// 加载会话消息
+- (NSMutableArray *)lodeMessageSource{
+    NSMutableArray *lms = nil;
+    NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
+    NSArray *sortArr = [conversations sortedArrayUsingComparator:^NSComparisonResult(EMConversation *obj1, EMConversation *obj2) {
+        EMMessage *message1 = [obj1 latestMessage];
+        EMMessage *message2 = [obj2 latestMessage];
+        if (message1.timestamp > message2.timestamp) {
+            return NSOrderedAscending;
+        }
+        return NSOrderedDescending;
+    }];
+    lms = [NSMutableArray arrayWithArray:sortArr];
+    return lms;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self refreshMessageSource];
+}
+
+// 刷新会话
+- (void)refreshMessageSource {
+    _messageSource = [self lodeMessageSource];
+    [self.tableView reloadData];
+}
+
+// 接收到的离线列表
+- (void)didReceiveOfflineMessages:(NSArray *)offlineMessages
+{
+    [self refreshMessageSource];
+}
+
+
+#pragma mark - IChatMangerDelegate
+
+-(void)didUnreadMessagesCountChanged
+{
+    [self refreshMessageSource];
+}
+
 
 // addButton响应事件
 - (void)addButtonClick:(UIButton *)btn {
@@ -78,21 +125,47 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 1;
+    return self.messageSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CPFMessageListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
     
-    cell.friendLabel.text = @"崔鹏飞";
-    cell.messageLabel.text = @"I LOVE YOU";
+    if (!cell) {
+        cell = [[CPFMessageListViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"messageCell"];
+    }
+    EMConversation *conversation = [self.messageSource objectAtIndex:indexPath.row];
     
-    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-    [dateFormater setDateFormat:@"hh:mm"];
-    cell.timeLabel.text = [dateFormater stringFromDate:[NSDate date]];
+    cell.friendLabel.text = conversation.chatter;
+    cell.messageLabel.text = [self subTitleMessageByConversation:conversation];
+    
+    cell.timeLabel.text = [self lastMessageTimeByConversation:conversation];
     cell.iconImage.image = [UIImage imageNamed:@"default_header"];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    EMConversation *conversation = [self.messageSource objectAtIndex:indexPath.row];
+    NSString *chatter = conversation.chatter;
+    
+    CPFFriendListController *friendListCtr = [[CPFFriendListController alloc] init];
+    
+//    CPFDialogViewController *dialogCtr = [[CPFDialogViewController alloc] init];
+    
+    CPFFriendList *friendsList = [[CPFFriendList alloc] init];
+    [[EaseMob sharedInstance].chatManager asyncFetchBuddyListWithCompletion:^(NSArray *buddyList, EMError *error) {
+        if (!error) {
+            friendsList.friends = buddyList;
+            for (EMBuddy *buddy in friendsList.friends) {
+                
+                if ([chatter isEqualToString:buddy.username]) {
+                    
+                    [self.navigationController pushViewController:friendListCtr animated:YES];
+                }
+            }
+        }
+    } onQueue:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -143,4 +216,58 @@
     }]];
     [self presentViewController:alertController animated:YES completion:nil];
 }
+
+// 得到最后消息时间
+-(NSString *)lastMessageTimeByConversation:(EMConversation *)conversation
+{
+    NSString *ret = @"";
+    EMMessage *lastMessage = [conversation latestMessage];;
+    if (lastMessage) {
+        
+        double timeInterval = lastMessage.timestamp;
+        // judge if the argument is in secconds(for former data structure).
+        if(timeInterval > 140000000000) {
+            timeInterval = timeInterval / 1000;
+        }
+        NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+        [dateFormater setDateFormat:@"hh:mm"];
+        ret = [dateFormater stringFromDate:[NSDate dateWithTimeIntervalSince1970:timeInterval]];
+    }
+    return ret;
+}
+
+// 得到未读消息条数
+- (NSInteger)unreadMessageCountByConversation:(EMConversation *)conversation
+{
+    NSInteger ret = 0;
+    ret = conversation.unreadMessagesCount;
+    
+    return  ret;
+}
+
+// 得到最后消息文字或者类型
+-(NSString *)subTitleMessageByConversation:(EMConversation *)conversation
+{
+    NSString *ret = @"";
+    EMMessage *lastMessage = [conversation latestMessage];
+    if (lastMessage) {
+        id<IEMMessageBody> messageBody = lastMessage.messageBodies.lastObject;
+        switch (messageBody.messageBodyType) {
+            case eMessageBodyType_Image:{
+                ret = @"[图片]";
+            } break;
+            case eMessageBodyType_Text:{
+                ret = @"[消息]";
+            } break;
+            case eMessageBodyType_Voice:{
+                ret = @"[语音]";
+            } break;
+            default: {
+            } break;
+        }
+    }
+    
+    return ret;
+}
+
 @end

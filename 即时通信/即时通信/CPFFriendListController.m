@@ -10,20 +10,23 @@
 #import "EaseMob.h"
 #import "TKAlertCenter.h"
 #import "CPFDialogViewController.h"
+#import "CPFFriendList.h"
 
-@interface CPFFriendListController () <EMChatManagerDelegate>
+@interface CPFFriendListController () <EMChatManagerDelegate, EMChatManagerBuddyDelegate>
 
-@property (nonatomic, strong) NSArray *friendList;
+
 
 @end
 
 @implementation CPFFriendListController
 
 - (void)viewWillAppear:(BOOL)animated{
+    
     [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:dispatch_get_main_queue()];
-    _friendList = [NSMutableArray array];
+    
     [[EaseMob sharedInstance].chatManager asyncFetchBuddyListWithCompletion:^(NSArray *buddyList, EMError *error) {
         if (!error) {
+            _friendList = [NSMutableArray array];
             _friendList = buddyList;
         }else {
             [[TKAlertCenter defaultCenter] postAlertWithMessage:@"获取好友列表失败"];
