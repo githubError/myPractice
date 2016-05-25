@@ -115,16 +115,16 @@
 
 #pragma mark - UITextViewDelegate
 // 动态改变输入框文本高度
-- (void)textViewDidChange:(UITextView *)textView {
-    _inputView.height = textView.contentSize.height;
-    self.height = _inputView.height;
-    if ([textView.text hasSuffix:@"\n"]) {
-        if (_textFieldSendBlock) {
-            _textFieldSendBlock(textView);
-        }
-        [textView resignFirstResponder];
-    }
-}
+//- (void)textViewDidChange:(UITextView *)textView {
+//    _inputView.height = textView.contentSize.height;
+//    self.height = _inputView.height;
+//    if ([textView.text hasSuffix:@"\n"]) {
+//        if (_textFieldSendBlock) {
+//            _textFieldSendBlock(textView);
+//        }
+//        [textView resignFirstResponder];
+//    }
+//}
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     if ([text isEqualToString:@"\n"]) {
