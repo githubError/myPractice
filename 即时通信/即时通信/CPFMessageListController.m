@@ -149,19 +149,18 @@
     EMConversation *conversation = [self.messageSource objectAtIndex:indexPath.row];
     NSString *chatter = conversation.chatter;
     
-    CPFFriendListController *friendListCtr = [[CPFFriendListController alloc] init];
+    CPFDialogViewController *dialogCtr = [[CPFDialogViewController alloc] init];
     
-//    CPFDialogViewController *dialogCtr = [[CPFDialogViewController alloc] init];
+    __block NSArray *arr = [NSArray array];
     
-    CPFFriendList *friendsList = [[CPFFriendList alloc] init];
     [[EaseMob sharedInstance].chatManager asyncFetchBuddyListWithCompletion:^(NSArray *buddyList, EMError *error) {
         if (!error) {
-            friendsList.friends = buddyList;
-            for (EMBuddy *buddy in friendsList.friends) {
+            arr = buddyList;
+            for (EMBuddy *buddy in arr) {
                 
                 if ([chatter isEqualToString:buddy.username]) {
-                    
-                    [self.navigationController pushViewController:friendListCtr animated:YES];
+                    dialogCtr.buddy = buddy;
+                    [self.navigationController pushViewController:dialogCtr animated:YES];
                 }
             }
         }
