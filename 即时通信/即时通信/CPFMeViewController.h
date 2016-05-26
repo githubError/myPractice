@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CPFMeViewController : UITableViewController
+@interface CPFMeViewController : UIViewController
 
 @end
