@@ -78,17 +78,23 @@
      *
      *  添加登录按钮响应事件
      */
+    
+    
+    // 按钮背景图片， 拉伸图片
+    UIImage *BtnBkgImg = [UIImage imageNamed:@"fts_green_btn"];
+    BtnBkgImg = [BtnBkgImg stretchableImageWithLeftCapWidth:BtnBkgImg.size.width*0.5 topCapHeight:BtnBkgImg.size.height*0.5];
+    UIImage *BtnBkgImgHL = [UIImage imageNamed:@"fts_green_btn_HL"];
+    BtnBkgImgHL = [BtnBkgImgHL stretchableImageWithLeftCapWidth:BtnBkgImgHL.size.width*0.5 topCapHeight:BtnBkgImgHL.size.height*0.5];
+    
     CPFButton *loginButton = [CPFButton shareButton];
     loginButton.frame = CGRectMake(passwordButton.right, passwordButton.bottom + 10, 60, 30);
     [loginButton setTitle:@"登录" forState:UIControlStateNormal];
+    
+    [loginButton setBackgroundImage:BtnBkgImg forState:UIControlStateNormal];
+    [loginButton setBackgroundImage:BtnBkgImgHL forState:UIControlStateHighlighted];
+    
     [loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     loginButton.titleLabel.font = [UIFont systemFontOfSize:18];
-    loginButton.backgroundColor = [UIColor redColor];
-    
-    //给按钮设置弧度,这里将按钮变成了圆形
-    loginButton.layer.cornerRadius = 8.0f;
-    loginButton.backgroundColor = [UIColor redColor];
-    loginButton.layer.masksToBounds = YES;
     
     loginButton.clickBlock = ^(CPFButton *btn){
         
@@ -129,17 +135,16 @@
      *
      *  添加注册按钮响应事件
      */
+    
     CPFButton *registerButton = [CPFButton shareButton];
     registerButton.frame = CGRectMake(loginButton.right + 20, passwordButton.bottom + 10, 60, 30);
     [registerButton setTitle:@"注册" forState:UIControlStateNormal];
+    
+    [registerButton setBackgroundImage:BtnBkgImg forState:UIControlStateNormal];
+    [registerButton setBackgroundImage:BtnBkgImgHL forState:UIControlStateHighlighted];
+    
     [registerButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     registerButton.titleLabel.font = [UIFont systemFontOfSize:18];
-    registerButton.backgroundColor = [UIColor redColor];
-    
-    //给按钮设置弧度,这里将按钮变成了圆形
-    registerButton.layer.cornerRadius = 8.0f;
-    registerButton.backgroundColor = [UIColor redColor];
-    registerButton.layer.masksToBounds = YES;
     
     registerButton.clickBlock = ^(CPFButton *btn){
         
