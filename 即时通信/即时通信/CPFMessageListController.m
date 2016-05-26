@@ -140,7 +140,7 @@
     cell.messageLabel.text = [self subTitleMessageByConversation:conversation];
     
     cell.timeLabel.text = [self lastMessageTimeByConversation:conversation];
-    cell.iconImage.image = [UIImage imageNamed:@"default_header"];
+    cell.iconImage.image = [UIImage imageNamed:@"chatListCellHead"];
     
     return cell;
 }
