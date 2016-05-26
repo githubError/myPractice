@@ -16,7 +16,7 @@
 
 #define KMoreSelectViewHeight 100
 
-@interface CPFDialogViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, EMCallManagerDelegate, CPFCellShowImageWithMessageDelegate, MWPhotoBrowserDelegate, IEMChatProgressDelegate, UIImagePickerControllerDelegate, EMChatManagerChatDelegate, CPFToolViewRecordDelegate>
+@interface CPFDialogViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, EMCallManagerDelegate, CPFCellShowImageWithMessageDelegate, MWPhotoBrowserDelegate, IEMChatProgressDelegate, UIImagePickerControllerDelegate, EMChatManagerDelegate, CPFToolViewRecordDelegate>
 {
     UITableView *_tableView;
     CPFToolView *_toolView;
@@ -70,7 +70,6 @@
     
     NSArray *messages = [conversation loadAllMessages];
     _allMessages = [NSMutableArray arrayWithArray:messages];
-    NSLog(@"----------allMessages%@",_allMessages);
     
     __block CPFDialogViewController *dialogViewCtr = self;
     __block NSMutableArray *arr = _allMessages;
@@ -241,8 +240,6 @@
     // 单聊、群聊、聊天室
     if (message.messageType != eMessageTypeChat) return;
     
-    NSLog(@" message.messageBodies= %@",message.messageBodies);
-    
     id body = [message.messageBodies firstObject];
     if ([body isKindOfClass:[EMTextMessageBody class]]) {
         EMTextMessageBody *textBody = body;
@@ -252,6 +249,15 @@
         [_allMessages addObject:textBody.message];
         // 刷新表格
         [_tableView reloadData];
+        
+        [self scrollLastRow];
+        
+    }else if ([body isKindOfClass:[EMVoiceMessageBody class]]) {
+        EMVoiceMessageBody *voiceBody = body;
+        [_allMessages addObject:voiceBody.message];
+        
+        [_tableView reloadData];
+        
         [self scrollLastRow];
     }
     
