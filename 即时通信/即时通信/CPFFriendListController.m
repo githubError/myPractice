@@ -74,6 +74,10 @@
     [self.navigationController pushViewController:dialogViewController animated:YES];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 55;
+}
+
 #pragma mark - EMChatManagerBuddyDelegate
 
 - (void)didUpdateBuddyList:(NSArray *)buddyList changedBuddies:(NSArray *)changedBuddies isAdd:(BOOL)isAdd {
