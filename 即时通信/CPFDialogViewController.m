@@ -100,13 +100,9 @@
         } onQueue:nil completion:^(EMMessage *message, EMError *error) {
             if (!error) {
                 NSLog(@"发送消息成功");
-                // 将消息存储到数组中
                 [arr addObject:message];
-                // 刷新表格
                 [tableView reloadData];
-                // 清空输入框
                 textView.text = @"";
-                // 滚动到tableView的底部
                 [dialogViewCtr scrollLastRow];
             }
         } onQueue:nil];
