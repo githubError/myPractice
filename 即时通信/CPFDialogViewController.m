@@ -16,7 +16,7 @@
 
 #define KMoreSelectViewHeight 100
 
-@interface CPFDialogViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, EMCallManagerDelegate, CPFCellShowImageWithMessageDelegate, MWPhotoBrowserDelegate, IEMChatProgressDelegate, UIImagePickerControllerDelegate, EMChatManagerDelegate, CPFToolViewRecordDelegate>
+@interface CPFDialogViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, EMCallManagerDelegate, CPFCellShowImageWithMessageDelegate, MWPhotoBrowserDelegate, IEMChatProgressDelegate, UIImagePickerControllerDelegate, EMChatManagerDelegate, CPFToolViewRecordDelegate,UINavigationControllerDelegate>
 {
     UITableView *_tableView;
     CPFToolView *_toolView;
@@ -43,6 +43,7 @@
     contentView.backgroundColor = [UIColor whiteColor];
     contentView.showsHorizontalScrollIndicator = NO;
     contentView.showsVerticalScrollIndicator = NO;
+    contentView.backgroundColor = [UIColor whiteColor];
     contentView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     [self.view addSubview:contentView];
     self.contentView = contentView;
@@ -113,10 +114,19 @@
     
     [self.contentView addSubview:_toolView];
     
-    
     // 初始化moreSelectView
     CPFMoreSelectView *moreSelectView = [[CPFMoreSelectView alloc] initWithImageBtnBlock:^{
         NSLog(@"---点击了图片按钮");
+        
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = dialogViewCtr;
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }else {
+            imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        [dialogViewCtr presentViewController:imagePicker animated:YES completion:nil];
+        
     } CallBtnBlock:^{
         NSLog(@"---点击了语音按钮");
     } VideoBtnBlock:^{
@@ -190,32 +200,22 @@
     self.contentView.top = 0;
 }
 
-- (void)cellShowImageWithMessage:(EMMessage *)message {
-    imageMsg = message;
-    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
-    
-    [self.navigationController pushViewController:browser animated:YES];
-}
-
 #pragma mark - 图片选择器
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
-{
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    
     [picker dismissViewControllerAnimated:YES completion:nil];
-    self.contentView.top = 0;
-    // 取出图片
+    
     UIImage *image = info[UIImagePickerControllerOriginalImage];
-    // 发送图片
     
-    // 创建环信图片对象
-    EMChatImage *chatImage = [[EMChatImage alloc]initWithUIImage:image displayName:@"image"];
+    EMChatImage *chatImage = [[EMChatImage alloc] initWithUIImage:image displayName:@"image"];
     
-    //创建图片消息体
-    EMImageMessageBody *body = [[EMImageMessageBody alloc]initWithImage:chatImage thumbnailImage:nil];
+    EMImageMessageBody *body = [[EMImageMessageBody alloc] initWithChatObject:chatImage];
     
-    // 创建图片消息
-    EMMessage *msg = [[EMMessage alloc]initWithReceiver:self.buddy.username bodies:@[body]];
+    NSArray *bodyArr = [NSArray arrayWithObject:body];
     
-    // 发送图片消息
+    EMMessage *msg = [[EMMessage alloc] initWithReceiver:self.buddy.username bodies:bodyArr];
+    
     [[EaseMob sharedInstance].chatManager asyncSendMessage:msg progress:self prepare:^(EMMessage *message, EMError *error) {
         NSLog(@"准备发送图片");
     } onQueue:nil completion:^(EMMessage *message, EMError *error) {
@@ -227,7 +227,6 @@
         }
     } onQueue:nil];
 }
-
 
 // 接收到好友消息
 - (void)didReceiveMessage:(EMMessage *)message
@@ -369,6 +368,14 @@
     return cell.rowHeight;
 }
 
+#pragma mark - 展示图片
+- (void)cellShowImageWithMessage:(EMMessage *)message {
+    imageMsg = message;
+    
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    
+    [self.navigationController pushViewController:browser animated:YES];
+}
 
 #pragma mark - MWPhotoBrowserDelegate
 - (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {

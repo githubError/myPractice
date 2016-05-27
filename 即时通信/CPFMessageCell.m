@@ -92,7 +92,7 @@
         
         NSData *imageData = [NSData dataWithContentsOfURL:url];
         [_messageBtn setImage:[UIImage imageWithData:imageData] forState:UIControlStateNormal];
-        [_messageBtn addTarget:self action:@selector(shadowImage) forControlEvents:UIControlEventTouchUpInside];
+        [_messageBtn addTarget:self action:@selector(showImage) forControlEvents:UIControlEventTouchUpInside];
     }
     
     _messageBtn.top = 30;
