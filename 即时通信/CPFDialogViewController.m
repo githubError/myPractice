@@ -134,6 +134,7 @@
         
         // 电话聊天
         [[EaseMob sharedInstance].callManager asyncMakeVoiceCall:self.buddy.username timeout:50 error:nil];
+        
     }];
     moreSelectView.frame = CGRectMake(0, kScreenHeight, kScreenWidth, KMoreSelectViewHeight);
     self.moreSelectView = moreSelectView;

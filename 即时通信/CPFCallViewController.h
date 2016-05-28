@@ -11,9 +11,17 @@
 
 @interface CPFCallViewController : UIViewController
 
+{
+    UIView *_smallView;
+    OpenGLView20 *_openGLView;
+}
+
 @property (nonatomic, strong) AVCaptureSession *session;
 @property (nonatomic, strong) AVCaptureDevice *captureDevice;
 @property (nonatomic, strong) AVCaptureDeviceInput *inputDevice;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
+@property (nonatomic, strong) AVCaptureVideoDataOutput *captureOutput;
+
+@property (nonatomic,strong)EMCallSession *m_session;
 
 @end
