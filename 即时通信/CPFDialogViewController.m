@@ -13,10 +13,10 @@
 #import "CPFMessageCell.h"
 #import "MWPhotoBrowser.h"
 #import "EMCDDeviceManager.h"
-
+#import "CPFCallViewController.h"
 #define KMoreSelectViewHeight 100
 
-@interface CPFDialogViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, EMCallManagerDelegate, CPFCellShowImageWithMessageDelegate, MWPhotoBrowserDelegate, IEMChatProgressDelegate, UIImagePickerControllerDelegate, EMChatManagerDelegate, CPFToolViewRecordDelegate,UINavigationControllerDelegate>
+@interface CPFDialogViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, EMCallManagerDelegate, CPFCellShowImageWithMessageDelegate, MWPhotoBrowserDelegate, IEMChatProgressDelegate, UIImagePickerControllerDelegate, EMChatManagerDelegate, CPFToolViewRecordDelegate,UINavigationControllerDelegate, EMCallManagerCallDelegate>
 {
     UITableView *_tableView;
     CPFToolView *_toolView;
@@ -125,8 +125,15 @@
         
     } CallBtnBlock:^{
         NSLog(@"---点击了语音按钮");
+        
+        // 电话聊天
+        [[EaseMob sharedInstance].callManager asyncMakeVoiceCall:self.buddy.username timeout:50 error:nil];
+        
     } VideoBtnBlock:^{
         NSLog(@"---点击了视频按钮");
+        
+        // 电话聊天
+        [[EaseMob sharedInstance].callManager asyncMakeVoiceCall:self.buddy.username timeout:50 error:nil];
     }];
     moreSelectView.frame = CGRectMake(0, kScreenHeight, kScreenWidth, KMoreSelectViewHeight);
     self.moreSelectView = moreSelectView;
@@ -398,6 +405,15 @@
 - (void)setProgress:(float)progress forMessage:(EMMessage *)message forMessageBody:(id<IEMMessageBody>)messageBody
 {
     NSLog(@"进度为%f",progress);
+}
+
+#pragma mark - EMCallManagerCallDelegate
+- (void)callSessionStatusChanged:(EMCallSession *)callSession changeReason:(EMCallStatusChangedReason)reason error:(EMError *)error{
+    if (!error && callSession.status == eCallSessionStatusConnected) {
+        CPFCallViewController *callViewCtr = [[CPFCallViewController alloc] init];
+        
+        [self presentViewController:callViewCtr animated:YES completion:nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

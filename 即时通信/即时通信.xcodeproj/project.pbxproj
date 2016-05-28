@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D1043C691CEE53FF00BFA8FD /* CPFSearchFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1043C681CEE53FF00BFA8FD /* CPFSearchFriendViewController.m */; };
 		D124D4B51CECBE79005BDB21 /* CPFPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = D124D4B41CECBE79005BDB21 /* CPFPopoverView.m */; };
+		D13BDDBC1CF9F3090085DC41 /* CPFCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D13BDDBB1CF9F3090085DC41 /* CPFCallViewController.m */; };
 		D13C4F1C1CF3577A00243D78 /* EMAudioPlayerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D13C4EA31CF3577A00243D78 /* EMAudioPlayerUtil.m */; };
 		D13C4F1D1CF3577A00243D78 /* EMAudioRecorderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D13C4EA51CF3577A00243D78 /* EMAudioRecorderUtil.m */; };
 		D13C4F1E1CF3577A00243D78 /* EMCDDeviceManager+Media.m in Sources */ = {isa = PBXBuildFile; fileRef = D13C4EA71CF3577A00243D78 /* EMCDDeviceManager+Media.m */; };
@@ -104,6 +105,8 @@
 		D1043C681CEE53FF00BFA8FD /* CPFSearchFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFSearchFriendViewController.m; sourceTree = "<group>"; };
 		D124D4B31CECBE79005BDB21 /* CPFPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFPopoverView.h; sourceTree = "<group>"; };
 		D124D4B41CECBE79005BDB21 /* CPFPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFPopoverView.m; sourceTree = "<group>"; };
+		D13BDDBA1CF9F3090085DC41 /* CPFCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFCallViewController.h; sourceTree = "<group>"; };
+		D13BDDBB1CF9F3090085DC41 /* CPFCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFCallViewController.m; sourceTree = "<group>"; };
 		D13C4E9B1CF356D700243D78 /* WeChat.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeChat.pch; sourceTree = "<group>"; };
 		D13C4E9E1CF3577A00243D78 /* EMCDDeviceManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCDDeviceManagerDelegate.h; sourceTree = "<group>"; };
 		D13C4E9F1CF3577A00243D78 /* EMCDDeviceManagerProximitySensorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCDDeviceManagerProximitySensorDelegate.h; sourceTree = "<group>"; };
@@ -325,7 +328,7 @@
 		D15517971CEBBE1A009B33BF /* TKAlertCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAlertCenter.m; sourceTree = "<group>"; };
 		D15517981CEBBE1A009B33BF /* UIView+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TKCategory.h"; sourceTree = "<group>"; };
 		D15517991CEBBE1A009B33BF /* UIView+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TKCategory.m"; sourceTree = "<group>"; };
-		D155179C1CEBBF07009B33BF /* FixFopen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = FixFopen.c; sourceTree = "<group>"; };
+		D155179C1CEBBF07009B33BF /* FixFopen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = FixFopen.c; path = ../FixFopen.c; sourceTree = "<group>"; };
 		D178A0A41CF2761800DC5876 /* UIImage+XMGResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+XMGResizing.h"; sourceTree = "<group>"; };
 		D178A0A51CF2761800DC5876 /* UIImage+XMGResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+XMGResizing.m"; sourceTree = "<group>"; };
 		D1A1D8D41CEA23DF00927C86 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -727,7 +730,6 @@
 				D13C4E9C1CF3577A00243D78 /* DeviceUtil */,
 				D13C4EB11CF3577A00243D78 /* MWPhotoBrowser */,
 				D13C4F0C1CF3577A00243D78 /* VoiceConvert */,
-				D155179C1CEBBF07009B33BF /* FixFopen.c */,
 				D155171E1CEBBDF6009B33BF /* include */,
 				D15517861CEBBDF6009B33BF /* lib */,
 				D15517891CEBBDF6009B33BF /* resources */,
@@ -979,6 +981,7 @@
 		D15517891CEBBDF6009B33BF /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				D155179C1CEBBF07009B33BF /* FixFopen.c */,
 				D155178A1CEBBDF6009B33BF /* EaseMob.bundle */,
 			);
 			path = resources;
@@ -1032,6 +1035,8 @@
 				D1BEE7A21CF07A49007A3479 /* CPFMoreSelectView.m */,
 				D1BEE7A41CF07A81007A3479 /* CPFMessageCell.h */,
 				D1BEE7A51CF07A81007A3479 /* CPFMessageCell.m */,
+				D13BDDBA1CF9F3090085DC41 /* CPFCallViewController.h */,
+				D13BDDBB1CF9F3090085DC41 /* CPFCallViewController.m */,
 			);
 			name = Dialog;
 			path = ..;
@@ -1150,6 +1155,7 @@
 				D13C4F201CF3577A00243D78 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
 				D13C4F311CF3577A00243D78 /* EMSDWebImageDownloaderOperation.m in Sources */,
 				D13C4F221CF3577A00243D78 /* EMCDDeviceManagerBase.m in Sources */,
+				D13BDDBC1CF9F3090085DC41 /* CPFCallViewController.m in Sources */,
 				D13C4F471CF3577A00243D78 /* PSTGridLayoutItem.m in Sources */,
 				D1BEE7A01CF07A01007A3479 /* CPFToolView.m in Sources */,
 				D1A1D8F81CEA4BEB00927C86 /* CPFMeViewController.m in Sources */,
