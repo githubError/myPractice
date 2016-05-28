@@ -411,6 +411,7 @@
 #pragma mark - EMCallManagerCallDelegate
 - (void)callSessionStatusChanged:(EMCallSession *)callSession changeReason:(EMCallStatusChangedReason)reason error:(EMError *)error{
     if (callSession.status == eCallSessionStatusConnected) {
+        
         CPFCallViewController *callViewCtr = [[CPFCallViewController alloc] init];
         // 将当前的会话传到下一个界面进行处理
         callViewCtr.m_session = callSession;
