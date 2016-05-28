@@ -124,7 +124,7 @@
         [dialogViewCtr presentViewController:imagePicker animated:YES completion:nil];
         
     } CallBtnBlock:^{
-        NSLog(@"---点击了语音按钮");
+        NSLog(@"---点击了电话按钮");
         
         // 电话聊天
         [[EaseMob sharedInstance].callManager asyncMakeVoiceCall:self.buddy.username timeout:50 error:nil];
@@ -132,8 +132,8 @@
     } VideoBtnBlock:^{
         NSLog(@"---点击了视频按钮");
         
-        // 电话聊天
-        [[EaseMob sharedInstance].callManager asyncMakeVoiceCall:self.buddy.username timeout:50 error:nil];
+        // 视频聊天
+        [[EaseMob sharedInstance].callManager asyncMakeVideoCall:self.buddy.username timeout:50 error:nil];
         
     }];
     moreSelectView.frame = CGRectMake(0, kScreenHeight, kScreenWidth, KMoreSelectViewHeight);
@@ -410,9 +410,10 @@
 
 #pragma mark - EMCallManagerCallDelegate
 - (void)callSessionStatusChanged:(EMCallSession *)callSession changeReason:(EMCallStatusChangedReason)reason error:(EMError *)error{
-    if (!error && callSession.status == eCallSessionStatusConnected) {
+    if (callSession.status == eCallSessionStatusConnected) {
         CPFCallViewController *callViewCtr = [[CPFCallViewController alloc] init];
-        
+        // 将当前的会话传到下一个界面进行处理
+        callViewCtr.m_session = callSession;
         [self presentViewController:callViewCtr animated:YES completion:nil];
     }
 }

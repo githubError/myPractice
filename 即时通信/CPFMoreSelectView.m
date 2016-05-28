@@ -43,7 +43,7 @@
         
         callBtn = [CPFButton shareButton];
         [callBtn setBackgroundColor:[UIColor redColor]];
-        [callBtn setTitle:@"语音" forState:UIControlStateNormal];
+        [callBtn setTitle:@"电话" forState:UIControlStateNormal];
         [callBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         callBtn.clickBlock = ^(CPFButton *btn){
             if (callBtnBlock) {
