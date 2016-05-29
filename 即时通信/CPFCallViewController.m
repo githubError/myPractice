@@ -14,7 +14,7 @@
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kAllSubviewHeight 44
 
-@interface CPFCallViewController () <AVCaptureVideoDataOutputSampleBufferDelegate, EMCallManagerDelegate>
+@interface CPFCallViewController () <AVCaptureVideoDataOutputSampleBufferDelegate, EMCallManagerDelegate, EMCallManagerCallDelegate>
 {
     UILabel *timeLabel;
 }
@@ -249,6 +249,14 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 - (void)dealloc
 {
     [[EaseMob sharedInstance].callManager removeDelegate:self];
+}
+
+#pragma mark - EMCallManagerCallDelegate
+
+- (void)callSessionStatusChanged:(EMCallSession *)callSession changeReason:(EMCallStatusChangedReason)reason error:(EMError *)error {
+    if (callSession.status == eCallSessionStatusDisconnected) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end
