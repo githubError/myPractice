@@ -62,7 +62,7 @@
         _sendTalkBtn = [CPFButton shareButton];
         _sendTalkBtn.frame = CGRectMake(_recordBtn.right, 5, 240, 30);
         [_sendTalkBtn setTitle:@"按住 说话" forState:UIControlStateNormal];
-        _sendTalkBtn.backgroundColor = [UIColor whiteColor];
+        _sendTalkBtn.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
         _sendTalkBtn.layer.cornerRadius = 6.0;
         [_sendTalkBtn.layer setBorderWidth:1.0];
         [_sendTalkBtn.layer setBorderColor:[UIColor grayColor].CGColor];
