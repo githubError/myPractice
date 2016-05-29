@@ -128,13 +128,11 @@
         
         // 电话聊天
         [[EaseMob sharedInstance].callManager asyncMakeVoiceCall:self.buddy.username timeout:50 error:nil];
-        
     } VideoBtnBlock:^{
         NSLog(@"---点击了视频按钮");
         
         // 视频聊天
         [[EaseMob sharedInstance].callManager asyncMakeVideoCall:self.buddy.username timeout:50 error:nil];
-        
     }];
     moreSelectView.frame = CGRectMake(0, kScreenHeight, kScreenWidth, KMoreSelectViewHeight);
     self.moreSelectView = moreSelectView;
@@ -188,8 +186,9 @@
 - (void)hideMoreSelectView{
     if (self.moreSelectView.top > kScreenHeight - 1) {
         return;
+    }else {
+        self.moreSelectView.top = kScreenHeight;
     }
-    self.moreSelectView.top = kScreenHeight;
 }
 
 - (void)setChatDelegate
@@ -290,8 +289,6 @@
                 [self sendVoiceWithFileName:recordPath duration:aDuration];
             }
         }];
-        
-        NSLog(@"录音结束");
     }else{
         NSLog(@"录音失败");
     }

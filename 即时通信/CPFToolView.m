@@ -27,8 +27,9 @@
         self.backgroundColor = [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1.0];
         // 初始化控件
         _recordBtn = [CPFButton shareButton];
-        _recordBtn.frame = CGRectMake(0, 0, 40, 40);
+        _recordBtn.frame = CGRectMake(0, -1, 40, 40);
         _recordBtn.contentMode = UIViewContentModeScaleAspectFill;
+        [_recordBtn.layer setBorderColor:[UIColor clearColor].CGColor];
         [_recordBtn setBackgroundImage:[UIImage imageNamed:@"ToolViewInputVoice"] forState:UIControlStateNormal];
         [_recordBtn setBackgroundImage:[UIImage imageNamed:@"ToolViewInputVoiceHL"] forState:UIControlStateHighlighted];
         [_recordBtn addTarget:self action:@selector(showRecordBtn) forControlEvents:UIControlEventTouchUpInside];
@@ -44,8 +45,9 @@
         [self addSubview:_inputView];
         
         _moreSelectBtn = [CPFButton shareButton];
-        _moreSelectBtn.frame = CGRectMake(_inputView.right, 0, 40, 40);
+        _moreSelectBtn.frame = CGRectMake(_inputView.right, -1, 40, 40);
         _moreSelectBtn.contentMode = UIViewContentModeScaleAspectFill;
+        [_moreSelectBtn.layer setBorderColor:[UIColor clearColor].CGColor];
         [_moreSelectBtn setBackgroundImage:[UIImage imageNamed:@"TypeSelectorBtn_Black"] forState:UIControlStateNormal];
         [_moreSelectBtn setBackgroundImage:[UIImage imageNamed:@"TypeSelectorBtnHL_Black"] forState:UIControlStateHighlighted];
         [self addSubview:_moreSelectBtn];
@@ -62,6 +64,8 @@
         [_sendTalkBtn setTitle:@"按住 说话" forState:UIControlStateNormal];
         _sendTalkBtn.backgroundColor = [UIColor whiteColor];
         _sendTalkBtn.layer.cornerRadius = 6.0;
+        [_sendTalkBtn.layer setBorderWidth:1.0];
+        [_sendTalkBtn.layer setBorderColor:[UIColor grayColor].CGColor];
         [_sendTalkBtn setTitle:@"松手 发送" forState:UIControlStateHighlighted];
         [_sendTalkBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_sendTalkBtn setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
@@ -79,9 +83,13 @@
     static BOOL isShowRecod = YES;
     if (isShowRecod) {
         _sendTalkBtn.hidden = NO;
+        [_recordBtn setBackgroundImage:[UIImage imageNamed:@"ToolViewInputText"] forState:UIControlStateNormal];
+        [_moreSelectBtn setBackgroundImage:[UIImage imageNamed:@"ToolViewInputTextHL"] forState:UIControlStateHighlighted];
         isShowRecod = NO;
     }else {
         _sendTalkBtn.hidden = YES;
+        [_recordBtn setBackgroundImage:[UIImage imageNamed:@"ToolViewInputVoice"] forState:UIControlStateNormal];
+        [_recordBtn setBackgroundImage:[UIImage imageNamed:@"ToolViewInputVoiceHL"] forState:UIControlStateHighlighted];
         isShowRecod = YES;
     }
 }
