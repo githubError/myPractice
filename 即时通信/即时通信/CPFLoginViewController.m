@@ -26,36 +26,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // 用户名按钮
-    CPFButton *userNameButton = [CPFButton shareButton];
-    userNameButton.frame = CGRectMake(40, 160, 60, 30);
-    [userNameButton setTitle:@"用户名:" forState:UIControlStateNormal];
-    [userNameButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    userNameButton.titleLabel.font = [UIFont systemFontOfSize:15];
-    // 设置按钮文字居中方式
-    userNameButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    userNameButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
-    [self.view addSubview:userNameButton];
+    UILabel *tipsLabel = [[UILabel alloc] init];
+    tipsLabel.center = self.view.center;
+    tipsLabel.frame = CGRectMake(65, 60, 190, 60);
+    tipsLabel.numberOfLines = 0;
+    tipsLabel.textAlignment = NSTextAlignmentCenter;
+    tipsLabel.font = [UIFont systemFontOfSize:20.0f];
+    tipsLabel.text = @"请输入用户名和密码直接注册或登录";
+    [self.view addSubview:tipsLabel];
+
     
-    // 密码按钮
-    CPFButton *passwordButton = [CPFButton shareButton];
-    passwordButton.frame = CGRectMake(userNameButton.left, userNameButton.bottom, 60, 30);
-    [passwordButton setTitle:@"密    码:" forState:UIControlStateNormal];
-    // 设置按钮文字居中方式
-    passwordButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    passwordButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    UIImageView *iconView = [[UIImageView alloc] init];
+    iconView.frame = CGRectMake(40, 160, 25, 25);
+    iconView.image = [UIImage imageNamed:@"account"];
+    [self.view addSubview:iconView];
     
-    [passwordButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    passwordButton.titleLabel.font = [UIFont systemFontOfSize:15];
-    [self.view addSubview:passwordButton];
+    UIImageView *pswView = [[UIImageView alloc] init];
+    pswView.frame = CGRectMake(iconView.left, iconView.bottom + 10, 25, 25);
+    pswView.image = [UIImage imageNamed:@"Card_Lock"];
+    [self.view addSubview:pswView];
     
     // 用户名文本框
     UITextField *userNameField = [[UITextField alloc] init];
-    userNameField.frame = CGRectMake(userNameButton.right + 10, userNameButton.top, 160, 25);
-    userNameField.backgroundColor = [UIColor lightGrayColor];
+    userNameField.frame = CGRectMake(iconView.right + 5, iconView.top, 200, 25);
+    userNameField.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
     userNameField.borderStyle = UITextBorderStyleRoundedRect;
-    userNameField.placeholder = @"输入用户名";
+    userNameField.placeholder = @"用户名";
     userNameField.keyboardType = UIKeyboardTypeEmailAddress;
     
     _userNameField = userNameField;
@@ -64,9 +61,10 @@
     
     // 密码框
     UITextField *passwordField = [[UITextField alloc] init];
-    passwordField.frame = CGRectMake(passwordButton.right + 10, passwordButton.top, 160, 25);
-    passwordField.backgroundColor = [UIColor lightGrayColor];
+    passwordField.frame = CGRectMake(pswView.right + 5, pswView.top, 200, 25);
+    passwordField.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
     passwordField.borderStyle = UITextBorderStyleRoundedRect;
+    passwordField.placeholder = @"密码";
     passwordField.secureTextEntry = YES;
     passwordField.clearsOnBeginEditing = YES;
     
@@ -78,8 +76,6 @@
      *
      *  添加登录按钮响应事件
      */
-    
-    
     // 按钮背景图片， 拉伸图片
     UIImage *BtnBkgImg = [UIImage imageNamed:@"fts_green_btn"];
     BtnBkgImg = [BtnBkgImg stretchableImageWithLeftCapWidth:BtnBkgImg.size.width*0.5 topCapHeight:BtnBkgImg.size.height*0.5];
@@ -87,7 +83,7 @@
     BtnBkgImgHL = [BtnBkgImgHL stretchableImageWithLeftCapWidth:BtnBkgImgHL.size.width*0.5 topCapHeight:BtnBkgImgHL.size.height*0.5];
     
     CPFButton *loginButton = [CPFButton shareButton];
-    loginButton.frame = CGRectMake(passwordButton.right, passwordButton.bottom + 10, 60, 30);
+    loginButton.frame = CGRectMake(pswView.right + 30, pswView.bottom + 20, 60, 30);
     [loginButton setTitle:@"登录" forState:UIControlStateNormal];
     
     [loginButton setBackgroundImage:BtnBkgImg forState:UIControlStateNormal];
@@ -137,7 +133,7 @@
      */
     
     CPFButton *registerButton = [CPFButton shareButton];
-    registerButton.frame = CGRectMake(loginButton.right + 20, passwordButton.bottom + 10, 60, 30);
+    registerButton.frame = CGRectMake(loginButton.right + 20, loginButton.top, 60, 30);
     [registerButton setTitle:@"注册" forState:UIControlStateNormal];
     
     [registerButton setBackgroundImage:BtnBkgImg forState:UIControlStateNormal];
