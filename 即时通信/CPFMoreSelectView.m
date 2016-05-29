@@ -31,9 +31,8 @@
 - (instancetype)initWithImageBtnBlock:(void (^)(void))imageBtnBlock CallBtnBlock:(void (^)(void))callBtnBlock VideoBtnBlock:(void (^)(void))videoBtnBlock {
     if (self = [super init]) {
         imageBtn = [CPFButton shareButton];
-        [imageBtn setBackgroundColor:[UIColor redColor]];
-        [imageBtn setTitle:@"图片" forState:UIControlStateNormal];
-        [imageBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [imageBtn setImage:[UIImage imageNamed:@"chatBar_colorMore_photo"] forState:UIControlStateNormal];
+        [imageBtn setImage:[UIImage imageNamed:@"chatBar_colorMore_photoSelected"] forState:UIControlStateHighlighted];
         imageBtn.clickBlock = ^(CPFButton *btn){
             if (imageBtnBlock) {
                 imageBtnBlock();
@@ -42,9 +41,8 @@
         [self addSubview:imageBtn];
         
         callBtn = [CPFButton shareButton];
-        [callBtn setBackgroundColor:[UIColor redColor]];
-        [callBtn setTitle:@"电话" forState:UIControlStateNormal];
-        [callBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [callBtn setImage:[UIImage imageNamed:@"chatBar_colorMore_audioCall"] forState:UIControlStateNormal];
+        [callBtn setImage:[UIImage imageNamed:@"chatBar_colorMore_audioCallSelected"] forState:UIControlStateHighlighted];
         callBtn.clickBlock = ^(CPFButton *btn){
             if (callBtnBlock) {
                 callBtnBlock();
@@ -53,9 +51,8 @@
         [self addSubview:callBtn];
         
         videoBtn = [CPFButton shareButton];
-        [videoBtn setBackgroundColor:[UIColor redColor]];
-        [videoBtn setTitle:@"视频" forState:UIControlStateNormal];
-        [videoBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [videoBtn setImage:[UIImage imageNamed:@"chatBar_colorMore_videoCall"] forState:UIControlStateNormal];
+        [videoBtn setImage:[UIImage imageNamed:@"chatBar_colorMore_videoCallSelected"] forState:UIControlStateHighlighted];
         videoBtn.clickBlock = ^(CPFButton *btn){
             if (videoBtnBlock) {
                 videoBtnBlock();
