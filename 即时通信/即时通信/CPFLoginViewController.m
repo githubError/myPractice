@@ -29,7 +29,7 @@
     
     UILabel *tipsLabel = [[UILabel alloc] init];
     tipsLabel.center = self.view.center;
-    tipsLabel.frame = CGRectMake(65, 60, 190, 60);
+    tipsLabel.frame = CGRectMake(65, 80, 190, 60);
     tipsLabel.numberOfLines = 0;
     tipsLabel.textAlignment = NSTextAlignmentCenter;
     tipsLabel.font = [UIFont systemFontOfSize:20.0f];
@@ -38,7 +38,7 @@
 
     
     UIImageView *iconView = [[UIImageView alloc] init];
-    iconView.frame = CGRectMake(40, 160, 25, 25);
+    iconView.frame = CGRectMake(40, tipsLabel.bottom + 50, 25, 25);
     iconView.image = [UIImage imageNamed:@"account"];
     [self.view addSubview:iconView];
     
@@ -56,7 +56,6 @@
     userNameField.keyboardType = UIKeyboardTypeEmailAddress;
     
     _userNameField = userNameField;
-    
     [self.view addSubview:_userNameField];
     
     // 密码框
