@@ -127,7 +127,7 @@
     // 小视图
     CGFloat width = 80;
     CGFloat height = _openGLView.frame.size.height / _openGLView.frame.size.width * width;
-    _smallView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width, 80, width, height)];
+    _smallView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 90, 50, width, height)];
     _smallView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_smallView];
     
@@ -156,7 +156,7 @@
     
     self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
     [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    self.previewLayer.frame = CGRectMake(0, 0, width, height);
+    self.previewLayer.frame = CGRectMake(self.view.frame.size.width - 90, 30, width, height);
     
     CALayer *rootLayer = [self.view layer];
     [rootLayer setMasksToBounds:YES];
