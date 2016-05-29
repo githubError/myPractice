@@ -14,6 +14,7 @@
 {
     UIView *_smallView;
     OpenGLView20 *_openGLView;
+    UInt8 *_imageDataBuffer;
 }
 
 @property (nonatomic, strong) AVCaptureSession *session;
