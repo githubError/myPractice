@@ -42,11 +42,18 @@
     _messageField.placeholder = @"附加信息";
     _messageField.delegate = self;
     
+    
+    UIImage *BtnBkgImg = [UIImage imageNamed:@"fts_green_btn"];
+    BtnBkgImg = [BtnBkgImg stretchableImageWithLeftCapWidth:BtnBkgImg.size.width*0.5 topCapHeight:BtnBkgImg.size.height*0.5];
+    UIImage *BtnBkgImgHL = [UIImage imageNamed:@"fts_green_btn_HL"];
+    BtnBkgImgHL = [BtnBkgImgHL stretchableImageWithLeftCapWidth:BtnBkgImgHL.size.width*0.5 topCapHeight:BtnBkgImgHL.size.height*0.5];
+    
     _commitButton = [CPFButton shareButton];
     
+    [_commitButton setBackgroundImage:BtnBkgImg forState:UIControlStateNormal];
+    [_commitButton setBackgroundImage:BtnBkgImgHL forState:UIControlStateHighlighted];
     _commitButton.frame = CGRectMake(_userInfoField.center.x - 40, 150, 80, 30);
-    _commitButton.backgroundColor = [UIColor redColor];
-    _commitButton.layer.cornerRadius = 8.0f;
+    
     [_commitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_commitButton setTitle:@"添加好友" forState:UIControlStateNormal];
     [_commitButton addTarget:self action:@selector(addFriend) forControlEvents:UIControlEventTouchUpInside];
@@ -58,6 +65,12 @@
 
 
 - (void)addFriend{
+    
+    if (_userInfoField.text.length == 0) {
+        [[TKAlertCenter defaultCenter] postAlertWithMessage:@"请输入好友名称"];
+        return;
+    }
+    
     [MBProgressHUD showMessag:@"正在发送请求..." toView:self.view];
     BOOL isSuccess = [[EaseMob sharedInstance].chatManager addBuddy:_userInfoField.text message:_messageField.text error:nil];
     if (isSuccess) {
