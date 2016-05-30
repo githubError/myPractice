@@ -14,7 +14,11 @@
 #import "MWPhotoBrowser.h"
 #import "EMCDDeviceManager.h"
 #import "CPFCallViewController.h"
+
 #define KMoreSelectViewHeight 100
+
+#define APP_STATUSBAR_HEIGHT (CGRectGetHeight([UIApplication sharedApplication].statusBarFrame))
+#define IS_HOTSPOT_CONNECTED (APP_STATUSBAR_HEIGHT == 40) ? YES : NO
 
 @interface CPFDialogViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, EMCallManagerDelegate, CPFCellShowImageWithMessageDelegate, MWPhotoBrowserDelegate, IEMChatProgressDelegate, UIImagePickerControllerDelegate, EMChatManagerDelegate, CPFToolViewRecordDelegate,UINavigationControllerDelegate, EMCallManagerCallDelegate>
 {
@@ -57,8 +61,13 @@
     
     [self.contentView addSubview:_tableView];
     
-    // 初始化toolView
-    _toolView = [[CPFToolView alloc] initWithFrame:CGRectMake(0, _tableView.bottom, kScreenWidth, 40)];
+    if (IS_HOTSPOT_CONNECTED ) { // 是否有个人热点开启
+        // 初始化toolView
+        _toolView = [[CPFToolView alloc] initWithFrame:CGRectMake(0, _tableView.bottom - 20, kScreenWidth, 40)];
+    }else {
+        // 初始化toolView
+        _toolView = [[CPFToolView alloc] initWithFrame:CGRectMake(0, _tableView.bottom, kScreenWidth, 40)];
+    }
     
     _toolView.delegate = self;
     
@@ -420,6 +429,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     [self hideMoreSelectView];
 }
 
