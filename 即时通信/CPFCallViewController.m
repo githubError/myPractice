@@ -19,9 +19,10 @@
     UILabel *timeLabel;
 }
 
-@property (nonatomic, assign)int time;
-@property (nonatomic, weak)NSTimer *timer;
-
+@property (nonatomic, assign)int sendTime;
+@property (nonatomic, assign)int recTime;
+@property (nonatomic, weak)NSTimer *sendtimer;
+@property (nonatomic, weak)NSTimer *rectimer;
 @end
 
 @implementation CPFCallViewController
@@ -29,7 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.time = 0;
+    self.sendTime = 0;
+    self.recTime = 0;
     
     UIImageView *bgView = [[UIImageView alloc]init];
     bgView.image = [UIImage imageNamed:@"callBg.png"];
@@ -78,12 +80,14 @@
     acceptBtn.clickBlock = ^(CPFButton *btn){
         
         [[EaseMob sharedInstance].callManager asyncAnswerCall:self.m_session.sessionId];
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(startTimer) userInfo:nil repeats:YES];
+        self.sendtimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(startTimer) userInfo:nil repeats:YES];
+        [self.rectimer invalidate];
     };
     
     cancelBtn.clickBlock = ^(CPFButton *btn){
         [[EaseMob sharedInstance].callManager asyncEndCall:self.m_session.sessionId reason:eCallReasonNull];
-        [self.timer invalidate];
+        [self.sendtimer invalidate];
+        [self.rectimer invalidate];
         [self dismissViewControllerAnimated:YES completion:nil];
     };
     
@@ -92,10 +96,26 @@
 
 - (void)startTimer
 {
-    self.time ++;
-    int hour = self.time/3600;
-    int min = (self.time - hour * 3600)/60;
-    int sec = self.time - hour* 3600 - min * 60;
+    self.sendTime ++;
+    int hour = self.sendTime/3600;
+    int min = (self.sendTime - hour * 3600)/60;
+    int sec = self.sendTime - hour* 3600 - min * 60;
+    
+    if (hour > 0) {
+        timeLabel.text = [NSString stringWithFormat:@"%i:%i:%i",hour,min,sec];
+    }else if(min > 0){
+        timeLabel.text = [NSString stringWithFormat:@"%i:%i",min,sec];
+    }else{
+        timeLabel.text = [NSString stringWithFormat:@"00:%i",sec];
+    }
+}
+
+- (void)recStartTimer
+{
+    self.recTime ++;
+    int hour = self.recTime/3600;
+    int min = (self.recTime - hour * 3600)/60;
+    int sec = self.recTime - hour* 3600 - min * 60;
     
     if (hour > 0) {
         timeLabel.text = [NSString stringWithFormat:@"%i:%i:%i",hour,min,sec];
@@ -256,6 +276,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 - (void)callSessionStatusChanged:(EMCallSession *)callSession changeReason:(EMCallStatusChangedReason)reason error:(EMError *)error {
     if (callSession.status == eCallSessionStatusDisconnected) {
         [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    if (callSession.status == eCallSessionStatusAccepted) {
+        self.rectimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(recStartTimer) userInfo:nil repeats:YES];
     }
 }
 

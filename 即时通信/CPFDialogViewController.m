@@ -23,6 +23,7 @@
     NSMutableArray *_allMessages;
     CGFloat _rowHeight;
     EMMessage *imageMsg;
+    UIImagePickerController *imagePicker;
 }
 
 @property (nonatomic, weak) CPFMoreSelectView *moreSelectView;
@@ -114,7 +115,7 @@
     CPFMoreSelectView *moreSelectView = [[CPFMoreSelectView alloc] initWithImageBtnBlock:^{
         NSLog(@"---点击了图片按钮");
         
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.delegate = dialogViewCtr;
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
