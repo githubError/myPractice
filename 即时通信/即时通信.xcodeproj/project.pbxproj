@@ -10,6 +10,12 @@
 		D1043C691CEE53FF00BFA8FD /* CPFSearchFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1043C681CEE53FF00BFA8FD /* CPFSearchFriendViewController.m */; };
 		D124D4B51CECBE79005BDB21 /* CPFPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = D124D4B41CECBE79005BDB21 /* CPFPopoverView.m */; };
 		D13BDDBC1CF9F3090085DC41 /* CPFCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D13BDDBB1CF9F3090085DC41 /* CPFCallViewController.m */; };
+		D14F2ADE1CFF2D8100293815 /* login.gif in Resources */ = {isa = PBXBuildFile; fileRef = D14F2AD81CFF2D8100293815 /* login.gif */; };
+		D14F2ADF1CFF2D8100293815 /* preview.gif in Resources */ = {isa = PBXBuildFile; fileRef = D14F2AD91CFF2D8100293815 /* preview.gif */; };
+		D14F2AE01CFF2D8100293815 /* register.gif in Resources */ = {isa = PBXBuildFile; fileRef = D14F2ADA1CFF2D8100293815 /* register.gif */; };
+		D14F2AE11CFF2D8100293815 /* sendCall.gif in Resources */ = {isa = PBXBuildFile; fileRef = D14F2ADB1CFF2D8100293815 /* sendCall.gif */; };
+		D14F2AE21CFF2D8100293815 /* sendMessage.gif in Resources */ = {isa = PBXBuildFile; fileRef = D14F2ADC1CFF2D8100293815 /* sendMessage.gif */; };
+		D14F2AE31CFF2D8100293815 /* sendRecordandPicture.gif in Resources */ = {isa = PBXBuildFile; fileRef = D14F2ADD1CFF2D8100293815 /* sendRecordandPicture.gif */; };
 		D154D30D1CEA1843004A4ABB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D154D30C1CEA1843004A4ABB /* main.m */; };
 		D154D3101CEA1843004A4ABB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D154D30F1CEA1843004A4ABB /* AppDelegate.m */; };
 		D154D3181CEA1843004A4ABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D154D3171CEA1843004A4ABB /* Assets.xcassets */; };
@@ -108,6 +114,12 @@
 		D13BDDBA1CF9F3090085DC41 /* CPFCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFCallViewController.h; sourceTree = "<group>"; };
 		D13BDDBB1CF9F3090085DC41 /* CPFCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFCallViewController.m; sourceTree = "<group>"; };
 		D13C4E9B1CF356D700243D78 /* WeChat.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeChat.pch; sourceTree = "<group>"; };
+		D14F2AD81CFF2D8100293815 /* login.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = login.gif; sourceTree = "<group>"; };
+		D14F2AD91CFF2D8100293815 /* preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = preview.gif; sourceTree = "<group>"; };
+		D14F2ADA1CFF2D8100293815 /* register.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = register.gif; sourceTree = "<group>"; };
+		D14F2ADB1CFF2D8100293815 /* sendCall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sendCall.gif; sourceTree = "<group>"; };
+		D14F2ADC1CFF2D8100293815 /* sendMessage.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sendMessage.gif; sourceTree = "<group>"; };
+		D14F2ADD1CFF2D8100293815 /* sendRecordandPicture.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sendRecordandPicture.gif; sourceTree = "<group>"; };
 		D154D3081CEA1843004A4ABB /* 即时通信.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "即时通信.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D154D30C1CEA1843004A4ABB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D154D30E1CEA1843004A4ABB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -397,6 +409,19 @@
 			name = "Add News";
 			sourceTree = "<group>";
 		};
+		D14F2AD71CFF2D2400293815 /* demonstrate */ = {
+			isa = PBXGroup;
+			children = (
+				D14F2AD81CFF2D8100293815 /* login.gif */,
+				D14F2AD91CFF2D8100293815 /* preview.gif */,
+				D14F2ADA1CFF2D8100293815 /* register.gif */,
+				D14F2ADB1CFF2D8100293815 /* sendCall.gif */,
+				D14F2ADC1CFF2D8100293815 /* sendMessage.gif */,
+				D14F2ADD1CFF2D8100293815 /* sendRecordandPicture.gif */,
+			);
+			name = demonstrate;
+			sourceTree = "<group>";
+		};
 		D154D2FF1CEA1843004A4ABB = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +469,7 @@
 		D154D30B1CEA1843004A4ABB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D14F2AD71CFF2D2400293815 /* demonstrate */,
 				D154D3171CEA1843004A4ABB /* Assets.xcassets */,
 				D154D3191CEA1843004A4ABB /* LaunchScreen.storyboard */,
 				D13C4E9B1CF356D700243D78 /* WeChat.pch */,
@@ -1271,8 +1297,14 @@
 			files = (
 				D1A1D8FD1CEA5A8100927C86 /* CPFMessageListViewCell.xib in Resources */,
 				D154D31B1CEA1843004A4ABB /* LaunchScreen.storyboard in Resources */,
+				D14F2AE21CFF2D8100293815 /* sendMessage.gif in Resources */,
 				D154D3181CEA1843004A4ABB /* Assets.xcassets in Resources */,
 				D17B38391CFE0C7700CD2184 /* MWPhotoBrowser.bundle in Resources */,
+				D14F2AE31CFF2D8100293815 /* sendRecordandPicture.gif in Resources */,
+				D14F2AE11CFF2D8100293815 /* sendCall.gif in Resources */,
+				D14F2ADF1CFF2D8100293815 /* preview.gif in Resources */,
+				D14F2AE01CFF2D8100293815 /* register.gif in Resources */,
+				D14F2ADE1CFF2D8100293815 /* login.gif in Resources */,
 				D17B383A1CFE0C7700CD2184 /* EaseMob.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
