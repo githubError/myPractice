@@ -10,16 +10,21 @@
 ## 实现的功能
 
   * **注册登录功能**
-![](https://github.com/CuiPengfeiGitHub/myPractice/blob/master/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/register.gif)
-![](https://github.com/CuiPengfeiGitHub/myPractice/blob/master/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/login.gif)
+  
+      ![](https://github.com/CuiPengfeiGitHub/myPractice/blob/master/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/register.gif)
+      ![](https://github.com/CuiPengfeiGitHub/myPractice/blob/master/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/login.gif)
   * **整体预览**
-![](https://github.com/CuiPengfeiGitHub/myPractice/blob/master/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/preview.gif)
+
+      ![](https://github.com/CuiPengfeiGitHub/myPractice/blob/master/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/preview.gif)
   * **发送语音、图片**
-![](https://github.com/CuiPengfeiGitHub/myPractice/blob/master/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/sendRecordandPicture.gif)
+
+      ![](https://github.com/CuiPengfeiGitHub/myPractice/blob/master/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/sendRecordandPicture.gif)
   * **发送文字、表情**
-![](https://github.com/CuiPengfeiGitHub/myPractice/blob/master/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/sendMessage.gif)
+
+      ![](https://github.com/CuiPengfeiGitHub/myPractice/blob/master/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/sendMessage.gif)
   * **拨打语音、视频通话**
-![](https://github.com/CuiPengfeiGitHub/myPractice/blob/master/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/sendCall.gif)
+
+      ![](https://github.com/CuiPengfeiGitHub/myPractice/blob/master/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1/sendCall.gif)
 
 ---
 
