@@ -33,9 +33,8 @@
     tipsLabel.numberOfLines = 0;
     tipsLabel.textAlignment = NSTextAlignmentCenter;
     tipsLabel.font = [UIFont systemFontOfSize:20.0f];
-    tipsLabel.text = @"请输入用户名和密码直接注册或登录";
+    tipsLabel.text = @"请输入用户名和密码直接登录或注册";
     [self.view addSubview:tipsLabel];
-
     
     UIImageView *iconView = [[UIImageView alloc] init];
     iconView.frame = CGRectMake(40, tipsLabel.bottom + 50, 25, 25);
