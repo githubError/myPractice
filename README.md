@@ -33,7 +33,7 @@
 
 1. 该项目中所有的图片资料均来自互联网，**侵权删**。
 2. 项目中使用环信SDK2.0版，如想运行测试请手动下载[环信SDK2.0](http://downloads.easemob.com/downloads/ios-easemob-sdk-2.2.5r1.zip)并导入项目中。
-3. 有任何疑问和见解请[联系我](cpf9401@163.com)
+3. 有任何疑问和见解，请联系我：cpf9401@163.com
 
 
 
